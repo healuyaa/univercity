@@ -1,0 +1,4 @@
+C:/project/kmzi_labs/build/CMakeFiles/kmzi_labs.dir
+C:/project/kmzi_labs/build/CMakeFiles/PACKAGE.dir
+C:/project/kmzi_labs/build/CMakeFiles/ALL_BUILD.dir
+C:/project/kmzi_labs/build/CMakeFiles/ZERO_CHECK.dir
