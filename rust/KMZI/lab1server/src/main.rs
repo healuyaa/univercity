@@ -1,31 +1,47 @@
-use tokio::net::TcpListener;
+use tokio::net::{TcpListener, TcpStream};
 use tokio::io::{AsyncReadExt, AsyncWriteExt};
-
-mod crypt;
+use std::sync::Arc;
+use tokio::sync::Mutex;
 
 #[tokio::main]
 async fn main() -> Result<(), Box<dyn std::error::Error>> {
     let listener = TcpListener::bind("127.0.0.1:8080").await?;
-    println!("Server listening on port 8080...");
+    let shared_data = Arc::new(Mutex::new(false));
 
-    loop {
-        let (mut socket, _) = listener.accept().await?;
+    while let Ok((mut first_socket, _)) = listener.accept().await {
+        let shared_data = shared_data.clone();
+
         tokio::spawn(async move {
-            let mut buffer = [0; 1024];
-            loop {
-                let n = match socket.read(&mut buffer).await {
-                    Ok(n) if n == 0 => return,
-                    Ok(n) => n,
-                    Err(e) => {
-                        eprintln!("Failed to read from socket: {}", e);
-                        return;
-                    }
-                };
-                if let Err(e) = socket.write_all(&buffer[0..n]).await {
-                    eprintln!("Failed to write to socket: {}", e);
+            let mut data = shared_data.lock().await;
+
+            if !*data {
+                // Первый клиент
+                let mut buffer = [0u8; 1024];
+                let n = first_socket.read(&mut buffer).await.expect("Ошибка чтения");
+
+                if n == 0 {
                     return;
                 }
+
+                let message = String::from_utf8_lossy(&buffer[..n]);
+                println!("Получено сообщение от первого клиента: {}", message);
+
+                // Разрешаем второму клиенту отправить свое сообщение
+                *data = true;
+            } else {
+                // Второй клиент
+                let mut buffer = [0u8; 1024];
+                let n = first_socket.read(&mut buffer).await.expect("Ошибка чтения");
+
+                if n == 0 {
+                    return;
+                }
+
+                let message = String::from_utf8_lossy(&buffer[..n]);
+                println!("Получено сообщение от второго клиента: {}", message);
             }
         });
     }
+
+    Ok(())
 }
