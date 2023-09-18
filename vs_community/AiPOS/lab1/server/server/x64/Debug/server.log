@@ -1,4 +1,0 @@
-﻿  server.cpp
-C:\project\vs_community\AiPOS\lab1\server\server\server.cpp(87,81): warning C4267: аргумент: преобразование из "size_t" в "int"; возможна потеря данных
-C:\project\vs_community\AiPOS\lab1\server\server\server.cpp(94,83): warning C4267: аргумент: преобразование из "size_t" в "int"; возможна потеря данных
-  server.vcxproj -> C:\project\vs_community\AiPOS\lab1\server\x64\Debug\server.exe
