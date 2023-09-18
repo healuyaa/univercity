@@ -63,7 +63,6 @@
         "ios": "cpp",
         "queue": "cpp",
         "regex": "cpp",
-        "NTL.lib": "cpp",
         "*.lib": "cpp",
         "charconv": "cpp",
         "optional": "cpp",

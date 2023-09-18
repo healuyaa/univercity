@@ -1,12 +1,13 @@
 use tokio::net::TcpStream;
-use tokio::io::{AsyncReadExt, AsyncWriteExt};
+use tokio::io::{AsyncReadExt, AsyncWriteExt, AsyncBufReadExt};
 use std::io;
 use tokio::sync::mpsc;
-use std::sync::{Arc, Mutex};
+use tokio::sync::Mutex; // Use tokio's Mutex
+use std::sync::Arc;
 
 #[tokio::main]
 async fn main() -> Result<(), Box<dyn std::error::Error>> {
-    let address = "127.0.0.1:8888";
+    let address = "127.0.0.1:8080";
     let stream = Arc::new(Mutex::new(TcpStream::connect(address).await?));
     let (tx, mut rx): (mpsc::Sender<String>, mpsc::Receiver<String>) = mpsc::channel(32);
 
@@ -14,7 +15,7 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
     let reader_task = {
         let stream = stream.clone();
         tokio::spawn(async move {
-            let mut stream = stream.lock().expect("Ошибка при блокировке мьютекса");
+            let mut stream = stream.lock().await; // Use tokio's Mutex
             loop {
                 let mut buffer = [0; 1024];
                 match stream.read(&mut buffer).await {
@@ -35,38 +36,32 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
         })
     };
 
-    // Асинхронная задача для отправки сообщений серверу
     let writer_task = {
         let stream = stream.clone();
         tokio::spawn(async move {
+            let mut stdin = tokio::io::BufReader::new(tokio::io::stdin());
+            let mut stream = stream.lock().await;
+
             loop {
                 let mut message = String::new();
-                io::stdin().read_line(&mut message).expect("Ошибка ввода");
+
+                if let Err(e) = stdin.read_line(&mut message).await {
+                    eprintln!("{}", e);
+                    break;
+                }
                 let message = message.trim().to_string();
 
                 if message.is_empty() {
                     continue;
                 }
 
-                let result = {
-                    let stream = stream.clone();
-                    tokio::spawn(async move {
-                        let mut stream = stream.lock().expect("Ошибка при блокировке мьютекса");
-                        if let Err(e) = stream.write_all(message.as_bytes()).await {
-                            eprintln!("Ошибка отправки сообщения серверу: {}", e);
-                        }
-                    })
-                };
-                result.await.expect("Ошибка при выполнении асинхронной задачи");
+                if let Err(e) = stream.write_all(message.as_bytes()).await {
+                    eprintln!("Ошибка отправки сообщения серверу: {}", e);
+                    break;
+                }
             }
         })
     };
-
-    // Асинхронная задача для обработки входящих сообщений от других клиентов
-    let mut client_messages = Vec::new();
-    while let Some(message) = rx.recv().await {
-        client_messages.push(message);
-    }
 
     // Ожидаем завершения задач
     reader_task.await?;
