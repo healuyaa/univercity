@@ -1,0 +1,3 @@
+C:/project/project_cmake/AiPOS/build/CMakeFiles/aipos_labs.dir
+C:/project/project_cmake/AiPOS/build/CMakeFiles/ALL_BUILD.dir
+C:/project/project_cmake/AiPOS/build/CMakeFiles/ZERO_CHECK.dir

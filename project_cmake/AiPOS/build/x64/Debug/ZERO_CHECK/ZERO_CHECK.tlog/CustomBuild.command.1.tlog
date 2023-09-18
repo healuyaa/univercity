@@ -1,0 +1,10 @@
+^C:\PROJECT\PROJECT_CMAKE\AIPOS\BUILD\CMAKEFILES\2036CA4EA01E748F7C7A6A0C60378A27\GENERATE.STAMP.RULE
+setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -SC:/project/project_cmake/AiPOS -BC:/project/project_cmake/AiPOS/build --check-stamp-list CMakeFiles/generate.stamp.list --vs-solution-file C:/project/project_cmake/AiPOS/build/aipos_labs.sln
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd

@@ -1,0 +1,8 @@
+[Mon Sep 18 21:07:08 2023] Complete connect to server
+[Mon Sep 18 21:07:33 2023] send string to server: load test.txt
+[Mon Sep 18 21:07:33 2023] recieve from server: 123213123
+[Mon Sep 18 21:07:33 2023] Disconnect from the server
+[Mon Sep 18 22:12:27 2023] Complete connect to server
+[Mon Sep 18 22:12:36 2023] send string to server: load test.txt
+[Mon Sep 18 22:12:36 2023] recieve from server: 123213123
+[Mon Sep 18 22:12:36 2023] Disconnect from the server
