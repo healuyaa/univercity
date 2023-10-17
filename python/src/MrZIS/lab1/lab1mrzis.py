@@ -23,7 +23,7 @@ class Perceptron:
             for inputs, label in zip(training_inputs, labels):
                 prediction = self.predict(inputs)
                 error = label - prediction
-                total_error += error
+                total_error += abs(error)
                 self.weights += learning_rate * error * inputs
                 self.bias += learning_rate * error
             errors.append(total_error)
@@ -57,7 +57,7 @@ if __name__ == "__main__":
     labels = np.array([0, 0, 0, 1])
 
     p1 = Perceptron(size = 2)
-    learning_rate = 0.02548
+    learning_rate = 0.113
     epochs = 8
 
     p1.train(training_inputs, labels, learning_rate, epochs)

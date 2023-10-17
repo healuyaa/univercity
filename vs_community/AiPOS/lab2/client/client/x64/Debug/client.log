@@ -1,0 +1,5 @@
+﻿  client.cpp
+C:\project\vs_community\AiPOS\lab2\client\client\client.cpp(7,1): warning C4005: _WINSOCK_DEPRECATED_NO_WARNINGS: изменение макроопределения
+C:\project\vs_community\AiPOS\lab2\client\client\client.cpp(7,1): message : "_WINSOCK_DEPRECATED_NO_WARNINGS" ранее объявлен в командной строке
+C:\project\vs_community\AiPOS\lab2\client\client\client.cpp(77,57): warning C4267: аргумент: преобразование из "size_t" в "int"; возможна потеря данных
+  client.vcxproj -> C:\project\vs_community\AiPOS\lab2\client\x64\Debug\client.exe

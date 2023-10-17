@@ -16,8 +16,8 @@ class DiffieHellman {
 
     int calculation_key(int degree, int secretNumber) {
         int base = calculation_mod(secretNumber);
-        int key = 0;
-        return key = (int) pow(base, degree) % n;
+        int key = (int) pow(base, degree) % n;
+        return key;
     }
 };
 

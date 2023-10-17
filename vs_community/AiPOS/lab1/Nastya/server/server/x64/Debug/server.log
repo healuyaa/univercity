@@ -1,0 +1,5 @@
+﻿  server.cpp
+C:\project\vs_community\AiPOS\lab1\Nastya\server\server\server.cpp(73,75): warning C4267: аргумент: преобразование из "size_t" в "int"; возможна потеря данных
+C:\project\vs_community\AiPOS\lab1\Nastya\server\server\server.cpp(77,77): warning C4267: аргумент: преобразование из "size_t" в "int"; возможна потеря данных
+C:\project\vs_community\AiPOS\lab1\Nastya\server\server\server.cpp(82,73): warning C4267: аргумент: преобразование из "size_t" в "int"; возможна потеря данных
+  server.vcxproj -> C:\project\vs_community\AiPOS\lab1\Nastya\server\x64\Debug\server.exe

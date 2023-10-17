@@ -1,0 +1,25 @@
+[Mon Oct 16 21:40:29 2023] Complete connect to server
+[Mon Oct 16 21:40:39 2023] send string to server: load test.txt
+[Mon Oct 16 21:40:39 2023] recieve from server: error file message
+[Mon Oct 16 21:40:39 2023] Disconnect from the server
+[Mon Oct 16 21:40:56 2023] Complete connect to server
+[Mon Oct 16 21:41:00 2023] send string to server: load test.txt
+[Mon Oct 16 21:41:00 2023] recieve from server: qweqweqwe
+[Mon Oct 16 21:41:00 2023] Disconnect from the server
+[Mon Oct 16 21:45:14 2023] Complete connect to server
+[Mon Oct 16 21:45:22 2023] send string to server: laosd ‡Q‡I‡Q‡I‡Q‡I‡Q‡I‡Q‡I‡Q
+[Mon Oct 16 21:45:22 2023] recieve from server: undefined command
+[Mon Oct 16 21:45:22 2023] Disconnect from the server
+[Mon Oct 16 21:48:41 2023] Complete connect to server
+[Mon Oct 16 21:49:31 2023] Complete connect to server
+[Mon Oct 16 21:49:39 2023] send string to server: load test.txt‡Q‡Q‡Q‡Q
+[Mon Oct 16 21:49:39 2023] recieve from server: error file message
+[Mon Oct 16 21:49:39 2023] Disconnect from the server
+[Mon Oct 16 22:02:55 2023] Complete connect to server
+[Mon Oct 16 22:03:00 2023] send string to server: load tses
+[Mon Oct 16 22:03:00 2023] recieve from server: error file message
+[Mon Oct 16 22:03:00 2023] Disconnect from the server
+[Mon Oct 16 22:03:51 2023] Complete connect to server
+[Mon Oct 16 22:03:57 2023] send string to server: load test.txt
+[Mon Oct 16 22:03:57 2023] recieve from server: qweqweqwe
+[Mon Oct 16 22:03:57 2023] Disconnect from the server

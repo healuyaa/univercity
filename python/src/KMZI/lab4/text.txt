@@ -1,0 +1,3 @@
+alphabet = f" !{char1}#$%&'()*+,-./0123456789:;<=>?@ABCDEFGHIGKLMNOPQRSTUVWXYZ[\]^_`abcdefghigklmnoupqrstuvwxyz{char2}|{char3}~АБВГДЕЖЗИЙКЛМНОПРСТУФХЦЧШЩЪЫЬЭЮЯабвгдежзийклмнопрстуфхцчшщъыьэюя"
+
+alphabet = []

@@ -8,15 +8,15 @@
 #define DESC 2
 
 bool ascendingOrder(int a, int b) {
-    return a < b;
+    return a <= b;
 }
 
 bool descendingOrder(int a, int b) {
-    return a > b;
+    return a >= b;
 }
 
 bool isSorted(const std::vector<int>& arr, std::function<bool(int, int)> compare_function) {
-    for (size_t i{}; i < arr.size(); ++i)
+    for (size_t i{1}; i < arr.size(); ++i)
     {
         if (!compare_function(arr[i-1], arr[i]))
             return false;
@@ -53,13 +53,8 @@ int main() {
     std::fstream file1("./src/3 kurs/5sem/SSP/lab2/output.txt");
     std::sort(numbers.begin(), numbers.end(), compare_function);
     for (int num : numbers) {
-        file1 << num << std::endl;
+        file1 << num << ' ';
     }
-
-    // std::sort(numbers.begin(), numbers.end(), descendingOrder);
-    // for (int num : numbers) {
-    //     file1 << num << std::endl;
-    // }
 
     if (isSorted(numbers, compare_function)) {
         std::cout << "Sort good" << std::endl;
