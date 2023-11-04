@@ -38,7 +38,6 @@ root.title("Управление списками")
 frame = tk.Frame(root)
 frame.pack(pady=10)
 
-# Подписи к спискам
 last_name_label = tk.Label(root, text="Фамилия")
 last_name_label.pack(side=tk.LEFT)
 
@@ -48,13 +47,13 @@ first_name_label.pack(side=tk.LEFT)
 middle_name_label = tk.Label(root, text="Отчество")
 middle_name_label.pack(side=tk.LEFT)
 
-entry = tk.Entry(frame, width=80)  # Увеличение длины поля ввода
+entry = tk.Entry(frame, width=80)
 entry.pack(side=tk.LEFT)
 
 add_button = tk.Button(frame, text="Добавить", command=add_name)
 add_button.pack(side=tk.LEFT)
 
-last_name_list = tk.Listbox(root, selectmode=tk.MULTIPLE)  # Разрешение множественного выбора
+last_name_list = tk.Listbox(root, selectmode=tk.MULTIPLE)
 last_name_list.pack(side=tk.LEFT)
 
 first_name_list = tk.Listbox(root)
@@ -73,3 +72,10 @@ copy_button = tk.Button(root, text="Скопировать", command=copy_select
 copy_button.pack()
 
 root.mainloop()
+
+
+# Разработать приложение управления тремя списками («Фамилия», «Имя», «Отчество») и строкой редактирования (TextField).
+# Для отображения строки редактирования вызывается диалоговое окно (Dialog).
+# В строку редактирования вводится информация в формате «Фамилия Имя Отчество».
+# По завершении ввода диалоговое окно закрывается, фамилия должна появиться в списке «Фамилия», имя - в списке «Имя», отчество - в списке «Отчество».
+# Предусмотреть возможность множественного выбора фамилий и записи их в отсортированном порядке в четвертый список

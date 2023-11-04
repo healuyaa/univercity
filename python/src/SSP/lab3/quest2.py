@@ -47,8 +47,8 @@ listbox2.pack(side=tk.RIGHT)
 select_odd_button = tk.Checkbutton(app, text="Выбрать четные строки", command=select_odd_rows)
 select_odd_button.pack()
 
-check1 = tk.Checkbutton(app, text="Выбрать нечетные строки", command=select_even_rows)
-check1.pack()
+select_even_button = tk.Checkbutton(app, text="Выбрать нечетные строки", command=select_even_rows)
+select_even_button.pack()
 
 entry = tk.Entry(app)
 entry.pack()
@@ -63,3 +63,9 @@ clear_button = tk.Button(app, text="Очистить второй список",
 clear_button.pack()
 
 app.mainloop()
+
+# Разработать приложение управления списком.
+# Вывести два флажка (Checkbox).
+# При первом включенном флажке осуществляется выбор всех нечетных строк и их удаление,
+# при втором включенном флажке осуществляется выбор всех четных строк и перенос их во второй список.
+# Предусмотреть обновление элементов списка и очистку второго списка
