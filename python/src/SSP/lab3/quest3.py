@@ -1,5 +1,4 @@
 import tkinter as tk
-from tkinter import simpledialog
 from tkinter import messagebox
 
 def add_name():
@@ -65,11 +64,11 @@ middle_name_list.pack(side=tk.LEFT)
 sorted_last_names_list = tk.Listbox(root)
 sorted_last_names_list.pack()
 
-sort_button = tk.Button(root, text="Сортировать", command=sort_names)
-sort_button.pack()
-
 copy_button = tk.Button(root, text="Скопировать", command=copy_selected)
-copy_button.pack()
+copy_button.pack(side=tk.LEFT)
+
+sort_button = tk.Button(root, text="Сортировать", command=sort_names)
+sort_button.pack(side=tk.LEFT)
 
 root.mainloop()
 

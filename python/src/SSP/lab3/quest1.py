@@ -16,7 +16,7 @@ root = tk.Tk()
 root.title("Множественный выбор элементов")
 
 text_var = tk.StringVar()
-text_field = tk.Entry(root, textvariable=text_var)
+text_field = tk.Entry(root, width=50, textvariable=text_var)
 text_field.pack()
 
 elements = ["Элемент 1", "Элемент 2", "Элемент 3", "Элемент 4", "Элемент 5", "afiuosdhjf9a708syfa890s7fhja90sdfjhas987fas", "as9807fhas7890ghas8g7ahdf9g87ahdg987adfhga80d7fhga8079dfgh0a8d97fhga87d9hga"]
