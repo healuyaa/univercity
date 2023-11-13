@@ -26,9 +26,13 @@ class Perceptron:
                 total_error += abs(error)
                 self.weights += learning_rate * error * inputs
                 self.bias += learning_rate * error
+            if(total_error == 0):
+                errors.append(total_error)
+                break
             errors.append(total_error)
-
-        plt.plot(range(1, epochs + 1), errors)
+            
+            
+        plt.plot(range(1, len(errors) + 1), errors)
         plt.xlabel('Epochs')
         plt.ylabel('Sum of errors')
         plt.title('Error change chart')

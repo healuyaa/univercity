@@ -1,0 +1,3 @@
+Test Error: 0.5619907959335833
+Epochs: 100
+Training Time: 0.20495343208312988 seconds
