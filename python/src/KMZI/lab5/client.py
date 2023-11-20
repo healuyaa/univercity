@@ -51,16 +51,3 @@ class Client:
         }
         rd1 = rd.randrange(0, 5)
         return list_r[rd1 % 5]
-            
-    
-def main():
-    c1 = Client()
-    vote1 = c1.gen_name_of_izb()
-    c1.gen_send_pair_MB(vote1, 123)
-    c1.send_end_vote()
-    
-    c1.send_key_id()
-    
-    
-if __name__ == "__main__":
-    main()  

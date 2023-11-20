@@ -42,21 +42,4 @@ class Register:
     def send_uniq_id_cs(self) -> dict:
         # for cond, uniq in self.list_c.items():
         #     print(f"{cond} : {uniq}") 
-        return self.list_c       
-def main():
-    r1 = Register()
-    
-    # r1.public_list_r()
-    # print('\n')
-    
-    # r1.get_uniq_id_c(1232131)
-    # r1.send_uniq_id_c(1232131)
-    
-    # r1.RC2_init()
-    
-    # r1.get_uniq_id_c(1232131)
-    # r1.get_uniq_id_c(1232131123)
-    # r1.get_uniq_id_c(1232138694589641123)
-     
-if __name__ == "__main__":
-    main()        
+        return self.list_c            

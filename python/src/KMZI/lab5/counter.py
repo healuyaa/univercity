@@ -48,9 +48,3 @@ class Counter:
         res_ = res.split(':')[1]
         if res_ in self.list_res:
             self.list_res[res_] += 1
-    
-def main():
-    pass
-
-if __name__ == "__main__":
-    main()  
