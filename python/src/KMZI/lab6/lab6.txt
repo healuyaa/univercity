@@ -1,0 +1,17 @@
+1.  openssl ecparam -name prime256v1 -out ec_params.pem
+    openssl genpkey -paramfile ec_params.pem -out ec_keypair.pem
+2.  openssl pkey -in ec_keypair.pem -noout -text
+3.  openssl req -new -key ec_keypair.pem -out ec_csr.pem -config openssl.cnf
+4.  openssl req -in ec_csr.pem -noout -text
+5.  openssl x509 -req -in ec_csr.pem -extfile openssl.cnf -extensions v3_req -signkey ec_keypair.pem -days 3650 -out ec_root_cert.pem
+6.  openssl x509 -in ec_root_cert.pem -noout -text
+
+1)  openssl ecparam -name prime256v1 -out intermediate_ec_params.pem
+    openssl genpkey -paramfile intermediate_ec_params.pem -out intermediate_ec_keypair.pem
+2)  openssl pkey -in intermediate_ec_keypair.pem -noout -text
+3)  openssl req -new -key intermediate_ec_keypair.pem -out intermediate_ec_csr.pem -config openssl_intermediate.cnf
+4)  openssl req -in intermediate_ec_csr.pem -noout -text
+5)  openssl x509 -req -in intermediate_ec_csr.pem -extfile openssl_intermediate.cnf -extensions v3_req -CA ec_root_cert.pem -CAkey ec_keypair.pem -CAcreateserial -days 3650 -out intermediate_ec_cert.pem
+6)  openssl x509 -in intermediate_ec_cert.pem -noout -text
+
+1-  openssl verify -verbose -show_chain -trusted ec_root_cert.pem -untrusted intermediate_ec_cert.pem ec_leaf_cert.pem
