@@ -22,7 +22,8 @@ class SingleLayerPerceptron:
 
     def predict(self, x):
         linear_output = np.dot(self.weights, x) - self.bias
-        return 1 if linear_output >= 0 else 0
+        sigmoid_output = 1 / (1 + np.exp(-linear_output))
+        return 1 if sigmoid_output >= 0.5 else 0
 
     def train_constant_learning_rate(self, X, y, epochs: int, isAdapt: bool = False):
         start_time = time.time()
@@ -59,11 +60,10 @@ class SingleLayerPerceptron:
                 y_batch = y[i:i + batch_size]
 
                 predictions = [self.predict(x) for x in X_batch]
-
                 errors = np.array(predictions) - np.array(y_batch)
 
                 self.weights = self.weights - self.learning_rate * np.dot(errors, X_batch)
-                self.bias = self.bias + self.learning_rate * np.sum(errors)
+                self.bias = self.bias + self.learning_rate * np.sum(errors)              
                 
                 for err in errors:
                     e_arr.append(err)
