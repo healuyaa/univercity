@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flask App</title>
+</head>
+<body>
+    <h1>Table 1 Data</h1>
+    <ul>
+        {% for row in data_table1 %}
+            <li>{{ row.code_model }} - {{ row.model }} - {{ row.car_model }} - {{ row.car_manufacturer }}
+                [<a href="{{ url_for('edit_data', code_model=row.code_model) }}">Edit</a>]
+                [<a href="{{ url_for('delete_data', code_model=row.code_model) }}">Delete</a>]
+            </li>
+        {% endfor %}
+    </ul>
+
+    <h1>Table 2 Data</h1>
+    <ul>
+        {% for row in data_table2 %}
+            <li>{{ row.code_model }} - {{ row.number_model }} - {{ row.color }} - {{ row.mileage }} - {{ row.price }}
+                [<a href="{{ url_for('edit_data', code_model=row.code_model) }}">Edit</a>]
+                [<a href="{{ url_for('delete_data', code_model=row.code_model) }}">Delete</a>]
+            </li>
+        {% endfor %}
+    </ul>
+
+    <h1>Table 3 Data</h1>
+    <ul>
+        {% for row in data_table3 %}
+            <li>{{ row.number_model }} - {{ row.year_of_issue }} - {{ row.engine_capacity }}
+                [<a href="{{ url_for('edit_data', code_model=row.number_model) }}">Edit</a>]
+                [<a href="{{ url_for('delete_data', code_model=row.number_model) }}">Delete</a>]
+            </li>
+        {% endfor %}
+    </ul>
+
+    <h2>Add New Data</h2>
+    <p>[<a href="{{ url_for('add_data') }}">Add New Data</a>]</p>
+</body>
+</html>

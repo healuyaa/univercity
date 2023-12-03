@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Delete Data</title>
+</head>
+<body>
+    <h1>Delete Data</h1>
+    <p>Are you sure you want to delete the following data?</p>
+    <p><strong>Code Model:</strong> {{ data.code_model }}</p>
+    <p><strong>Model:</strong> {{ data.model }}</p>
+    <p><strong>Car Model:</strong> {{ data.car_model }}</p>
+    <p><strong>Car Manufacturer:</strong> {{ data.car_manufacturer }}</p>
+
+    <form method="post" action="{{ url_for('delete_data', code_model=data.code_model) }}">
+        <input type="submit" value="Delete Data">
+    </form>
+</body>
+</html>
