@@ -1,6 +1,6 @@
 /*
 SQLyog Community v13.2.0 (64 bit)
-MySQL - 8.0.34 : Database - lab567_bd
+MySQL - 8.0.34 : Database - lab567
 *********************************************************************
 */
 
@@ -12,9 +12,9 @@ MySQL - 8.0.34 : Database - lab567_bd
 /*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
 /*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
-CREATE DATABASE /*!32312 IF NOT EXISTS*/`lab567_bd` /*!40100 DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci */ /*!80016 DEFAULT ENCRYPTION='N' */;
+CREATE DATABASE /*!32312 IF NOT EXISTS*/`lab567` /*!40100 DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci */ /*!80016 DEFAULT ENCRYPTION='N' */;
 
-USE `lab567_bd`;
+USE `lab567`;
 
 /*Table structure for table `table1` */
 
@@ -27,13 +27,15 @@ CREATE TABLE `table1` (
   `car_manufacturer` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
   `id` int NOT NULL AUTO_INCREMENT,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 /*Data for the table `table1` */
 
 insert  into `table1`(`code_model`,`model`,`car_model`,`car_manufacturer`,`id`) values 
 ('123GHY77F','submath1','nothing1','FirstT Manufacture',1),
-('NVSUU22',' justi',' ellov',' Third',2);
+('NVSUU22',' justi',' ellov',' Third',2),
+('t ','t ','t ','t ',3),
+('ch',' ch',' ch',' ch',4);
 
 /*Table structure for table `table2` */
 
