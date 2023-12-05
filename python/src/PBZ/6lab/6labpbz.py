@@ -175,7 +175,7 @@ class DatabaseApp:
         if table_name not in ["table1", "table2", "table3"]:
             messagebox.showerror("Ошибка", "Неверное название таблицы")
             return
-
+        
         # Получение данных из выбранной таблицы для отображения
         query = f"SELECT * FROM {table_name}"
         self.cursor.execute(query)
@@ -194,6 +194,14 @@ class DatabaseApp:
 
         # Проверка наличия записи с указанным ID
         if any(record_id in row for row in rows):
+            # Определение имен столбцов для каждой таблицы
+            if table_name == "table1":
+                columns = ["code_model", "model", "car_model", "car_manufacturer", "id"]
+            elif table_name == "table2":
+                columns = ["code_model", "number_model", "color", "mileage", "price", "id"]
+            elif table_name == "table3":
+                columns = ["number_model", "year_of_issue", "engine_capacity", "id"]
+
             # Диалог для ввода новых данных
             new_data = simpledialog.askstring("Редактирование записи", "Введите новые значения записи через запятую:")
             if not new_data:
@@ -204,8 +212,7 @@ class DatabaseApp:
 
             # Подготовка SQL-запроса для обновления записи
             update_query = f"UPDATE {table_name} SET "
-            update_query += ", ".join([f"{col} = %s" for col in ["code_model", "model", "car_model", "car_manufacturer", "id"]])
-
+            update_query += ", ".join([f"{col} = %s" for col in columns])
             update_query += f" WHERE id = {record_id}"
 
             try:
@@ -219,7 +226,7 @@ class DatabaseApp:
                 messagebox.showerror("Ошибка", f"Не удалось отредактировать запись. Ошибка: {e}")
         else:
             messagebox.showerror("Ошибка", f"Запись с ID {record_id} не найдена в таблице {table_name}")
-
+            
     def delete_record(self):
         # Диалог для выбора таблицы
         table_name = simpledialog.askstring("Выбор таблицы", "Введите название таблицы (table1, table2, table3):")
