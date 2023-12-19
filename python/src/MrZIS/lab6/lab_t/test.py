@@ -7,6 +7,7 @@ import time
 from math import isnan
 E_arr = []
 
+
 class Perceptron:
     def __init__(self, input_size, hidden_size, output_size, learning_rate=0.4):
         self.input_size = input_size
@@ -145,7 +146,7 @@ if __name__ == "__main__":
 
     epochs = 100
     X, Y = [], []
-    with open(r"src/MrZIS/lab6/abc/diabetes.csv") as file:
+    with open(r"src/MrZIS/lab6/lab_t/diabetes.csv") as file:
         reader = csv.reader(file)
         for i, row in enumerate(reader):
             X.append([float(value) for value in row[:-1]])
