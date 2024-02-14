@@ -1,0 +1,6 @@
+C:/project/project_cmake/GIIS/test_imgui/build/CMakeFiles/imgui.dir
+C:/project/project_cmake/GIIS/test_imgui/build/CMakeFiles/imgui_opengl_impl.dir
+C:/project/project_cmake/GIIS/test_imgui/build/CMakeFiles/test_imgui_lib.dir
+C:/project/project_cmake/GIIS/test_imgui/build/CMakeFiles/PACKAGE.dir
+C:/project/project_cmake/GIIS/test_imgui/build/CMakeFiles/ALL_BUILD.dir
+C:/project/project_cmake/GIIS/test_imgui/build/CMakeFiles/ZERO_CHECK.dir

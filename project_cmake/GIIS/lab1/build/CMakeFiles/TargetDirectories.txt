@@ -1,0 +1,6 @@
+C:/project/project_cmake/GIIS/lab1/build/CMakeFiles/imgui.dir
+C:/project/project_cmake/GIIS/lab1/build/CMakeFiles/imgui_opengl_impl.dir
+C:/project/project_cmake/GIIS/lab1/build/CMakeFiles/remove-noisy.dir
+C:/project/project_cmake/GIIS/lab1/build/CMakeFiles/PACKAGE.dir
+C:/project/project_cmake/GIIS/lab1/build/CMakeFiles/ALL_BUILD.dir
+C:/project/project_cmake/GIIS/lab1/build/CMakeFiles/ZERO_CHECK.dir

@@ -1,0 +1,10 @@
+^C:\PROJECT\PROJECT_CMAKE\GIIS\TEST_IMGUI_DX9\BUILD\CMAKEFILES\730B7FB5CC29AB43DC4926366CEAE646\GENERATE.STAMP.RULE
+setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -SC:/project/project_cmake/GIIS/test_imgui_dx9 -BC:/project/project_cmake/GIIS/test_imgui_dx9/build --check-stamp-list CMakeFiles/generate.stamp.list --vs-solution-file C:/project/project_cmake/GIIS/test_imgui_dx9/build/dx9_imgui_c.sln
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd

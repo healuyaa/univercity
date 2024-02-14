@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="17.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <CustomBuild Include="C:\project\project_cmake\GIIS\lab1\build\CMakeFiles\5775b591d43d13f658c9fff9ae8f5563\NightlyMemoryCheck.rule">
+      <Filter>CMake Rules</Filter>
+    </CustomBuild>
+    <CustomBuild Include="C:\project\project_cmake\GIIS\lab1\CMakeLists.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="C:\project\project_cmake\GIIS\lab1\build\CMakeFiles\NightlyMemoryCheck" />
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="CMake Rules">
+      <UniqueIdentifier>{F5770C8E-7BA7-382C-8639-1405F1FD0950}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>

@@ -1,0 +1,10 @@
+^C:\PROJECT\PROJECT_CMAKE\GIIS\TEST_IMGUI\BUILD\CMAKEFILES\56A8238A4F4C4E71628FBD19F38B5511\GENERATE.STAMP.RULE
+setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -SC:/project/project_cmake/GIIS/test_imgui -BC:/project/project_cmake/GIIS/test_imgui/build --check-stamp-list CMakeFiles/generate.stamp.list --vs-solution-file C:/project/project_cmake/GIIS/test_imgui/build/test_imgui_lib.sln
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
