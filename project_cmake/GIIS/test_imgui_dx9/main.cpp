@@ -4,6 +4,9 @@
 #include <vector>
 #include <algorithm>
 
+#include <thread>
+#include <atomic>
+
 #include "imgui.h"
 
 #include "backends/imgui_impl_win32.h"
@@ -35,15 +38,21 @@ void ResetDevice();
 LRESULT WINAPI WndProc(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam);
 
 
-static float progress_bar = 0;
-float UpdateProgressBar(float progress) {
-    progress_bar = progress;
-    return progress;
-}
+
+std::thread imageThread;
+bool isThreadRunning = false;
+
+
 
 template<class T>
 const T& clamp(const T& value, const T& low, const T& high) {
     return (value < low) ? low : (value > high) ? high : value;
+}
+
+
+std::atomic <float> progress_bar = 0.0f;
+void UpdateProgressBar(float progress) {
+    progress_bar.store(progress);
 }
 
 
@@ -99,21 +108,45 @@ std::string CreateDirectoryPathOut() {
     return documentsPath;
 }
 
+void RemoveFolderOut() {
+    if(DeleteFile(UsessTI::pathes_after_save[original].c_str()) && 
+        DeleteFile(UsessTI::pathes_after_save[noisy].c_str()) && 
+        DeleteFile(UsessTI::pathes_after_save[removeborder].c_str())) {}
+
+    if (RemoveDirectoryA(UsessTI::path_to_folder.c_str())) {}
+
+    std::cout << UsessTI::path_to_folder;
+}
+
+
 void DoTransformImage(TImage &first, float threeshold_add_noisy, int threeshold_remove_noisy, int border_size = 1, int kernel_size = 3) {
     first.AddingBorder(border);
     first.AddNoisy(0.0, threeshold_add_noisy);
     first.RemoveNoise(kernel_size, threeshold_remove_noisy, UpdateProgressBar);
     first.RemoveBorder(border);
 
-    std::string documentsPath = CreateDirectoryPathOut();
-    first.SaveImages(documentsPath);
+    std::string path = CreateDirectoryPathOut();
+    UsessTI::path_to_image = path + '/';
+    first.SaveImages(path);
 
-    UsessTI::pathes_after_save[original] += documentsPath + "/original_image.jpg";
+    UsessTI::pathes_after_save[original] += path + "/original_image.jpg";
     // UsessTI::pathes_after_save[border] += documentsPath + "/image_border.jpg";
-    UsessTI::pathes_after_save[noisy] += documentsPath + "/noisy_image.jpg";
+    UsessTI::pathes_after_save[noisy] += path + "/noisy_image.jpg";
     // UsessTI::pathes_after_save[removenoisy] += documentsPath + "/after_image.jpg";
-    UsessTI::pathes_after_save[removeborder] += documentsPath + "/no_noisy_image.jpg";
+    UsessTI::pathes_after_save[removeborder] += path + "/no_noisy_image.jpg";
 }
+
+void StartImageProcessingThread(TImage &first, float threeshold_add_noisy, int threeshold_remove_noisy, int border_size = 1, int kernel_size = 3) {
+    if (!isThreadRunning) {
+        isThreadRunning = true;
+
+        imageThread = std::thread([first = std::move(first), threeshold_add_noisy, threeshold_remove_noisy, border_size, kernel_size]() mutable {
+            DoTransformImage(first, threeshold_add_noisy, threeshold_remove_noisy, border_size, kernel_size);
+            isThreadRunning = false;
+        });
+    }
+}
+
 
 bool LoadTextureFromFile(const char* filename, PDIRECT3DTEXTURE9* out_texture, int* out_width, int* out_height)
 {
@@ -137,6 +170,8 @@ void RenderImagesWindow(std::string name, int &my_image_width, int &my_image_hei
     ImGui::End();
 }
 
+
+static bool check_button_remove = true;
 void WindowSettingUI() {
     static float threeshold_add_noisy = 23;
     static int threeshold_remove_noisy = 9;
@@ -145,14 +180,19 @@ void WindowSettingUI() {
     static int kernel_size = 3;
 
     static bool check_button = false;
+    static bool check_button_confirm = false;
     
     if(ImGui::Button("Open file")) {
         OpenFileButton();
     }
-
     ImGui::SameLine();
     if(ImGui::Button("Save file")) {
-
+        check_button_remove = false;
+    }
+    if (ImGui::IsItemHovered()) {
+        ImGui::BeginTooltip();
+        ImGui::Text("Saves to User/Documents/out");
+        ImGui::EndTooltip();
     }
     ImGui::Spacing();
 
@@ -195,7 +235,7 @@ void WindowSettingUI() {
 
     ImGui::Text("Change noise smoothing threshold");
     if(ImGui::InputInt("##Reduce noise", &threeshold_remove_noisy, 2)) {
-        threeshold_remove_noisy = clamp(kernel_size, 0, 50);
+        threeshold_remove_noisy = clamp(threeshold_remove_noisy, 0, 50);
     }
     if (ImGui::IsItemHovered()) {
         ImGui::BeginTooltip();
@@ -208,7 +248,12 @@ void WindowSettingUI() {
     TImage first(UsessTI::path_to_image);
     if(ImGui::Button("Confirm")) {
         if(UsessTI::path_to_image != "") {
-            DoTransformImage(first, threeshold_add_noisy, threeshold_remove_noisy, border_size, kernel_size);
+            StartImageProcessingThread(TImage(first), threeshold_add_noisy, threeshold_remove_noisy, border_size, kernel_size);
+
+            if(imageThread.joinable()) {
+                imageThread.join();
+            }
+            check_button_confirm = true;
         }
     }
 
@@ -221,9 +266,9 @@ void WindowSettingUI() {
     }
     ImGui::Spacing();
 
-    ImGui::ProgressBar(progress_bar, ImVec2(0.0f, 0.0f));
+    ImGui::ProgressBar(progress_bar.load(), ImVec2(0.0f, 0.0f));
 
-    if(check_button) {
+    if(check_button && check_button_confirm) {
         {
             StyleWindowImages();
             
@@ -233,24 +278,10 @@ void WindowSettingUI() {
             bool ret4;
             ret4 = LoadTextureFromFile(UsessTI::pathes_after_save[removeborder].c_str(), &my_texture4, &my_image_width4, &my_image_height4);
             IM_ASSERT(ret4);
-            std::string name = "Remove border";
+            std::string name = "No noisy image";
 
             RenderImagesWindow(name, my_image_width4, my_image_height4, my_texture4);
         }
-
-        // {
-        //     StyleWindowImages();
-            
-        //     int my_image_width3 = 0;
-        //     int my_image_height3 = 0;
-        //     PDIRECT3DTEXTURE9 my_texture3 = NULL;
-        //     bool ret3;
-        //     ret3 = LoadTextureFromFile(UsessTI::pathes_after_save[removenoisy].c_str(), &my_texture3, &my_image_width3, &my_image_height3);
-        //     IM_ASSERT(ret3);
-        //     std::string name = "Remove noisy";
-
-        //     RenderImagesWindow(name, my_image_width3, my_image_height3, my_texture3);
-        // }
 
         {
             StyleWindowImages();
@@ -266,20 +297,6 @@ void WindowSettingUI() {
             RenderImagesWindow(name, my_image_width2, my_image_height2, my_texture2);
         }        
 
-        // {
-        //     StyleWindowImages();
-            
-        //     int my_image_width1 = 0;
-        //     int my_image_height1 = 0;
-        //     PDIRECT3DTEXTURE9 my_texture1 = NULL;
-        //     bool ret1;
-        //     ret1 = LoadTextureFromFile(UsessTI::pathes_after_save[border].c_str(), &my_texture1, &my_image_width1, &my_image_height1);
-        //     IM_ASSERT(ret1);
-        //     std::string name = "Border";
-
-        //     RenderImagesWindow(name, my_image_width1, my_image_height1, my_texture1);
-        // }
-
         {
             StyleWindowImages();
             
@@ -293,7 +310,6 @@ void WindowSettingUI() {
 
             RenderImagesWindow(name, my_image_width0, my_image_height0, my_texture0);
         }
-
     }
 }
 
@@ -318,7 +334,7 @@ int main(int, char**){
     IMGUI_CHECKVERSION();
     ImGui::CreateContext();
     ImGuiIO& io = ImGui::GetIO(); (void)io;
-    io.ConfigFlags |= ImGuiConfigFlags_NavEnableKeyboard;    
+    io.ConfigFlags |= ImGuiConfigFlags_NavEnableKeyboard;
     io.ConfigFlags |= ImGuiConfigFlags_NavEnableGamepad;
 
     ImGui::StyleColorsClassic();
@@ -355,7 +371,7 @@ int main(int, char**){
         ImGui_ImplWin32_NewFrame();
         ImGui::NewFrame();
 
-    
+
         StyleSettingsWindow();
         ImGui::Begin("Window settings", NULL, ImGuiWindowFlags_NoMove | ImGuiWindowFlags_NoResize | ImGuiWindowFlags_NoCollapse);        
 
@@ -363,7 +379,7 @@ int main(int, char**){
 
         ImGui::PopStyleVar();
         ImGui::End();
-        
+
 
         ImGui::EndFrame();
         g_pd3dDevice->SetRenderState(D3DRS_ZENABLE, FALSE);
@@ -390,7 +406,11 @@ int main(int, char**){
 
     CleanupDeviceD3D();
     ::DestroyWindow(hwnd);
-    ::UnregisterClassW(wc.lpszClassName, wc.hInstance);    
+    ::UnregisterClassW(wc.lpszClassName, wc.hInstance);
+    
+    if(check_button_remove) {
+        RemoveFolderOut();
+    }
 }
 
 

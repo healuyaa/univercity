@@ -13,10 +13,12 @@ class UsessTI {
     static std::string path_to_image;
     static int timer;
     static std::vector<std::string> pathes_after_save;
+    static std::string path_to_folder;
 };
 std::string UsessTI::path_to_image = "";
 int UsessTI::timer = 0;
 std::vector<std::string> UsessTI::pathes_after_save(5, "");
+std::string UsessTI::path_to_folder = "";
 
 class TImage {
     public:
@@ -60,7 +62,7 @@ class TImage {
                 for (int kx = -middle; kx <= middle; ++kx) {
                     for (int ky = -middle; ky <= middle; ++ky) {
                         values.push_back(noisy_image.at<cv::Vec3b>(std::max(0, std::min(x - kx + 1, original_image.rows - 1)), 
-                                                                                std::max(0, std::min(y - ky + 1, original_image.cols - 1))));
+                                                                    std::max(0, std::min(y - ky + 1, original_image.cols - 1))));
                     }
                 }
 
@@ -76,13 +78,11 @@ class TImage {
 
                 if ((cv::norm(values[kernel_size * kernel_size / 2], cv::NORM_L2) - cv::norm(temp_sum, cv::NORM_L2))  > threshold_noise) {
                     result.at<cv::Vec3b>(x, y) = values[kernel_size * kernel_size / 2];
-                }
+                }               
 
                 ++current_pixel;
-                if (progressCallback) {
-                    float progress = static_cast<float>(current_pixel) / total_pixels;
-                    progressCallback(progress);
-                }
+                float progress = ((float)current_pixel) / ((float)(total_pixels + 1));
+                progressCallback(progress);
             }
         }
         after_image = result.clone();
