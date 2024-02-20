@@ -2,10 +2,10 @@
 	"artifacts" : 
 	[
 		{
-			"path" : "Release/dx9_imgui_c.exe"
+			"path" : "RelWithDebInfo/dx9_imgui_c.exe"
 		},
 		{
-			"path" : "Release/dx9_imgui_c.pdb"
+			"path" : "RelWithDebInfo/dx9_imgui_c.pdb"
 		}
 	],
 	"backtrace" : 1,
@@ -77,7 +77,7 @@
 			"compileCommandFragments" : 
 			[
 				{
-					"fragment" : "/DWIN32 /D_WINDOWS /W3 /GR /EHsc /MD /O2 /Ob2 /DNDEBUG"
+					"fragment" : "/DWIN32 /D_WINDOWS /W3 /GR /EHsc /MD /Zi /O2 /Ob1 /DNDEBUG"
 				}
 			],
 			"includes" : 
@@ -115,14 +115,14 @@
 	[
 		{
 			"backtrace" : 3,
+			"id" : "imgui_dx9::@6890427a1f51a3e7e1df"
+		},
+		{
+			"backtrace" : 3,
 			"id" : "imgui::@6890427a1f51a3e7e1df"
 		},
 		{
 			"id" : "ZERO_CHECK::@6890427a1f51a3e7e1df"
-		},
-		{
-			"backtrace" : 3,
-			"id" : "imgui_dx9::@6890427a1f51a3e7e1df"
 		}
 	],
 	"id" : "dx9_imgui_c::@6890427a1f51a3e7e1df",
@@ -131,11 +131,11 @@
 		"commandFragments" : 
 		[
 			{
-				"fragment" : "/DWIN32 /D_WINDOWS /W3 /GR /EHsc /MD /O2 /Ob2 /DNDEBUG",
+				"fragment" : "/DWIN32 /D_WINDOWS /W3 /GR /EHsc /MD /Zi /O2 /Ob1 /DNDEBUG",
 				"role" : "flags"
 			},
 			{
-				"fragment" : "/machine:x64 /INCREMENTAL:NO /subsystem:console",
+				"fragment" : "/machine:x64 /debug /INCREMENTAL /subsystem:console",
 				"role" : "flags"
 			},
 			{
@@ -225,12 +225,12 @@
 			},
 			{
 				"backtrace" : 3,
-				"fragment" : "Release\\imgui.lib",
+				"fragment" : "RelWithDebInfo\\imgui.lib",
 				"role" : "libraries"
 			},
 			{
 				"backtrace" : 3,
-				"fragment" : "Release\\imgui_dx9.lib",
+				"fragment" : "RelWithDebInfo\\imgui_dx9.lib",
 				"role" : "libraries"
 			},
 			{

@@ -55,7 +55,7 @@
 				{
 					"directoryIndex" : 0,
 					"id" : "ALL_BUILD::@6890427a1f51a3e7e1df",
-					"jsonFile" : "target-ALL_BUILD-Debug-e01c7ccc0b6c1ef4e04a.json",
+					"jsonFile" : "target-ALL_BUILD-Debug-0a0278c87f4eda3f54df.json",
 					"name" : "ALL_BUILD",
 					"projectIndex" : 0
 				},
@@ -97,7 +97,7 @@
 				{
 					"directoryIndex" : 0,
 					"id" : "dx9_imgui_c::@6890427a1f51a3e7e1df",
-					"jsonFile" : "target-dx9_imgui_c-Debug-ba856ff64bf70c18d2ba.json",
+					"jsonFile" : "target-dx9_imgui_c-Debug-7e1de45bad71dcab3480.json",
 					"name" : "dx9_imgui_c",
 					"projectIndex" : 0
 				},
@@ -171,7 +171,7 @@
 				{
 					"directoryIndex" : 0,
 					"id" : "ALL_BUILD::@6890427a1f51a3e7e1df",
-					"jsonFile" : "target-ALL_BUILD-Release-e01c7ccc0b6c1ef4e04a.json",
+					"jsonFile" : "target-ALL_BUILD-Release-0a0278c87f4eda3f54df.json",
 					"name" : "ALL_BUILD",
 					"projectIndex" : 0
 				},
@@ -213,7 +213,7 @@
 				{
 					"directoryIndex" : 0,
 					"id" : "dx9_imgui_c::@6890427a1f51a3e7e1df",
-					"jsonFile" : "target-dx9_imgui_c-Release-34a67f65dece359a3ad0.json",
+					"jsonFile" : "target-dx9_imgui_c-Release-0ba02d638c3b7a40e69e.json",
 					"name" : "dx9_imgui_c",
 					"projectIndex" : 0
 				},
@@ -287,7 +287,7 @@
 				{
 					"directoryIndex" : 0,
 					"id" : "ALL_BUILD::@6890427a1f51a3e7e1df",
-					"jsonFile" : "target-ALL_BUILD-MinSizeRel-e01c7ccc0b6c1ef4e04a.json",
+					"jsonFile" : "target-ALL_BUILD-MinSizeRel-0a0278c87f4eda3f54df.json",
 					"name" : "ALL_BUILD",
 					"projectIndex" : 0
 				},
@@ -329,7 +329,7 @@
 				{
 					"directoryIndex" : 0,
 					"id" : "dx9_imgui_c::@6890427a1f51a3e7e1df",
-					"jsonFile" : "target-dx9_imgui_c-MinSizeRel-baff0d2ded516965373b.json",
+					"jsonFile" : "target-dx9_imgui_c-MinSizeRel-22816c3b5e559fc00133.json",
 					"name" : "dx9_imgui_c",
 					"projectIndex" : 0
 				},
@@ -403,7 +403,7 @@
 				{
 					"directoryIndex" : 0,
 					"id" : "ALL_BUILD::@6890427a1f51a3e7e1df",
-					"jsonFile" : "target-ALL_BUILD-RelWithDebInfo-e01c7ccc0b6c1ef4e04a.json",
+					"jsonFile" : "target-ALL_BUILD-RelWithDebInfo-0a0278c87f4eda3f54df.json",
 					"name" : "ALL_BUILD",
 					"projectIndex" : 0
 				},
@@ -445,7 +445,7 @@
 				{
 					"directoryIndex" : 0,
 					"id" : "dx9_imgui_c::@6890427a1f51a3e7e1df",
-					"jsonFile" : "target-dx9_imgui_c-RelWithDebInfo-6c13e28691f26798b639.json",
+					"jsonFile" : "target-dx9_imgui_c-RelWithDebInfo-8710aa9964d64ea7e782.json",
 					"name" : "dx9_imgui_c",
 					"projectIndex" : 0
 				},
