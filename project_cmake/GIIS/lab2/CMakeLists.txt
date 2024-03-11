@@ -8,7 +8,6 @@ enable_testing()
 set(DXSDK_INCLUDE_DIR "C:/Program Files (x86)/Microsoft DirectX SDK (June 2010)/Include")
 set(DXSDK_LIB_DIR "C:/Program Files (x86)/Microsoft DirectX SDK (June 2010)/Lib/x64")
 set(SQLite_SOURCE_DIR ${CMAKE_CURRENT_SOURCE_DIR}/sqlite)
-set(vCard_SOURCE_DIR ${CMAKE_CURRENT_SOURCE_DIR}/vCard)
 set(VCardSQLite_SOURCE_DIR ${CMAKE_CURRENT_SOURCE_DIR}/VCardSQLite)
 
 file(GLOB SRC_FILES
@@ -35,9 +34,6 @@ add_library(imgui_dx9
 
 include_directories(${DXSDK_INCLUDE_DIR})
 link_directories(${DXSDK_LIB_DIR})
-
-include_directories(${vCard_SOURCE_DIR}/include)
-link_directories(${vCard_SOURCE_DIR}/include)
 
 include_directories(${VCardSQLite_SOURCE_DIR})
 
