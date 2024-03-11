@@ -59,7 +59,7 @@ body {
 
   .rectangle {
     width: 1400px;
-    height: 1400px;
+    height: 1300px;
     background-color: #d8d8d8;
     border: 2px solid #ccc;
     padding: 20px;
@@ -68,13 +68,40 @@ body {
 }
 
 .label-column {
-    display: flex; /* Используем flexbox для выравнивания элементов */
-    align-items: center; /* Центрируем элементы по вертикали */
-    margin-bottom: 10px; /* Расстояние между метками (по вашему выбору) */
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
 }
 
 .label-column img {
-    margin-right: 10px; /* Расстояние между изображением и текстом метки */
-    max-width: 50px; /* Ширина изображения (по вашему выбору) */
-    max-height: 50px; /* Высота изображения (по вашему выбору) */
+    margin-right: 10px;
+    max-width: 50px;
+    max-height: 50px;
+}
+
+.rectangle_small {
+    display: flex;
+    width: 1400px;
+    height: 200px;
+    background-color: #c9c9c9;
+    border: 2px solid #ccc;
+    padding: 20px;
+    margin: 30px auto;
+    z-index: -1;
+}
+
+.column {
+    flex: 1;
+    margin: 0 10px;
+}
+
+.column img {
+    width: 100%;
+    height: auto;
+}
+
+.icons img {
+    width: 20px;
+    height: 20px;
+    margin-right: 5px;
 }
