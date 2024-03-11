@@ -1,0 +1,724 @@
+.wysiwyg .back-href {
+    border-bottom-color: #A2B2B5;
+    color: #46656C;
+}
+
+.molodej .content-main {
+
+    margin-left: 0;
+}
+
+.content-main.press-centre-short-news {
+    padding-left: 0;
+}
+
+.content-main.press-centre-short-news .news-list > li {
+	padding-left: 0px;
+	padding-right: 0px;
+}
+
+.molodej .blockquote-wrap {
+    padding-left: 40px;
+}
+
+.molodej-item-1 {
+    margin-bottom: 30px;
+}
+
+.molodej .press-front {
+    padding-bottom: 30px;
+}
+
+.molodej .project-list {
+    max-width: 200%;
+    width: auto;
+}
+
+.molodej .project-list li {
+    padding-left: 0;
+    background: none;
+}
+
+.molodej .project-list li a img {
+   /* width: 100%;*/
+    box-shadow: 0 2px 2px rgba(0,0,0,0.6);
+    border-radius: 4px;
+}
+
+.molodej .content-main.social-front {
+    padding-right: 0;
+    padding-top: 20px;
+    border-top: 1px solid #D6D9DC;
+}
+
+.molodej .content-main.social-front h2{
+    padding: 0;
+    margin-bottom: 0.75em;
+}
+
+.social-items.project-list {
+    padding: 0;
+    margin-left: -4% !important;
+    text-indent: -1px;
+    font-size: 0;
+}
+.social-items.project-list li {
+    white-space: normal;
+    word-spacing: 0;
+    width: 29% !important;
+    margin-left: 4%;
+    display: inline-block;
+    *display: inline;
+    zoom: 1;
+    vertical-align: top;
+    text-indent: 0;
+    font-size: 14px;
+
+}
+.social-items.project-list li a img {
+    margin-bottom: 5px;
+    max-width: 100%;
+    box-shadow: 0 2px 2px rgba(0, 0, 0, 0.6);
+    border-radius: 4px;
+}
+
+.social-items.project-list li > a {
+    margin-bottom: 10px;
+    display: block;
+    border-bottom: none;
+}
+
+.social-items.project-list li a span {
+    position:relative;
+    border-bottom: 1px solid #C0CAE1;
+    margin-bottom: 10px;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.social-items.project-list li a:hover span {
+    border-bottom-color: #eec2b7;
+
+}
+
+.molodej .content-main.social-front .short-text {
+    max-width: 66%;
+    margin-bottom: 2em;
+}
+
+.molodej .all-leaders sup {
+    color: #aaaaaa;
+}
+
+.molodej .leaders li a span {
+    text-transform: uppercase;
+    font-size: 15px;
+}
+
+
+.molodej .main-menu-margin {
+    padding: 20px 18px 15px !important;
+    margin: 0;
+    background: #969fac;
+}
+
+.page-title.other-title {
+    position: relative;
+    background: #969fac;
+    border-bottom: 1px solid #7a8390;
+    text-align: center;
+    text-shadow: 0 1px 1px rgba(0,0,0,0.6);
+    color: #ffffff;
+    font-family: "universcondensedBold",arial, serif;
+    text-transform: uppercase;
+    font-weight: bold;
+    padding-bottom: 14px;
+    font-size: 28px;
+    padding-top: 2px;
+}
+
+.page-title.other-title:before {
+    content: '';
+    display: block;
+    width: 100%;
+    background: #969fac;
+    height: 76px;
+    position: absolute;
+    bottom: 100%;
+}
+
+.page-title.other-title a {
+    color: #ffffff;
+    border-bottom-color: #ffffff;
+    border-bottom-color: rgba(255, 255, 255, 0.60);
+}
+
+.page-title.other-title a:hover {
+    color: #AF1D05;
+    border-bottom-color: #eec2b7;
+    border-bottom-color: rgba(173, 29, 5, 0.60);
+}
+
+
+.molodej .projects {
+    margin-top: 50px;
+}
+.molodej .projects h5 {
+    margin-bottom: 10px;
+}
+.molodej .projects li a {
+    border-bottom-color: #A2B2B5;
+    color: #46656C;
+    font-size: 13px;
+}
+
+.molodej .projects li a:hover {
+    color: #ca4222;
+    border-bottom-color: #eec2b7;
+}
+
+.spravka-inside .content-nav .active.parent > .for-active {
+    background: none;
+
+}
+.spravka-inside .content-nav .active.parent .for-active a {
+    color: #333333;
+    border-bottom-color: #aaaaaa;
+}
+
+.spravka-inside .content-nav .active.parent .for-active a:hover {
+    color: #CA4222;
+    border-bottom-color: #eec2b7;
+}
+
+
+.spravka-inside .content-nav .active .for-active {
+    background-color: #dbac3b;
+}
+
+
+.spravka-inside .content-nav .active .for-active span {
+    color: #ffffff;
+}
+
+.spravka-inside .content-nav .active .for-active a {
+    color: #ffffff;
+    border-bottom-color: #ffffff;
+    border-bottom-color: rgba(255, 255, 255, 0.60);
+}
+.spravka-inside .content-nav .active .for-active a:hover {
+    color: #CA4222;
+    border-bottom-color: #d96a64;
+}
+
+.spravka-inside ul.tenders-category-list li .tender-title a {
+    font-weight: normal;
+}
+
+.spravka-inside .content-nav-copy ul {
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.spravka-inside .content-nav-copy {
+    margin-bottom: 50px;
+    padding-bottom: 10px;
+}
+
+.spravka-inside .content-nav ul {
+    margin-bottom: 20px;
+    margin-right: 0;
+}
+
+
+.gruz-reg-form {
+    background: url("../../images/inside-form-bg.png") center 0 repeat-y #becedc;
+    padding: 30px 55px;
+    border-radius: 4px;
+    position: relative;
+    margin-bottom: 50px;
+}
+
+.gruz-reg-form .info {
+    font-size: 11px;
+    overflow: hidden;
+    position: relative;
+    top: 4px;
+    padding-bottom: 5px;
+}
+
+
+/*  FORM  */
+.gruz-reg .db-form {overflow:hidden;width:100%;}
+.gruz-reg .db-form .highlight {padding:25px;overflow:hidden;}
+.gruz-reg .db-form .row {margin-bottom:15px;display:block;zoom:1;}
+.gruz-reg .db-form .row-title{float:left;padding:5px 0 0;width:180px;
+    font-weight: bold; font-size: 14px;
+    font-family: arial, serif;}
+.gruz-reg .db-form .row-title.hide {visibility:hidden;}
+.gruz-reg .db-form .field {
+    padding-top: 2px;padding-bottom: 2px;float:none;padding-left:15px;position:relative; overflow: hidden; display: block; width: auto;}
+.gruz-reg .db-form .rq {color:#a90000;left:2px;position:relative;top:-1px;}
+.gruz-reg .db-form  .example {color:#666666;font-size:11px;font-style:italic;padding:4px 0 0 5px;}
+.gruz-reg .db-form  .submit {padding:0 35px 0 180px;overflow:hidden;}
+
+/* form elements */
+.gruz-reg .db-form input[type=text],
+.gruz-reg .db-form input[type=password],
+.gruz-reg .db-form input[type=file],
+.gruz-reg .db-form select,
+.gruz-reg .db-form textarea {border:1px solid;border-color: #b7b6b1 #c5c5c0 #eaeae4 #c5c5c0;color:#333;font:14px/17px Arial;padding:5px 5px;width:98%; background: #ffffff;}
+.gruz-reg .db-form select {width:302px;padding:5px;}
+.gruz-reg .db-form  textarea {height:140px;width:430px;resize:none;}
+.gruz-reg .db-form input[type=file] {width: 290px;}
+
+.db-form input.text:focus, .db-form  textarea:focus {border:1px solid #5da5d7;
+    box-shadow:0 0 5px rgba(111, 216, 255, 0.8);
+    -webkit-box-shadow:0 0 5px rgba(111, 216, 255, 0.8);
+    -moz-box-shadow:0 0 5px rgba(111, 216, 255, 0.8);}
+
+
+/* form validation */
+.db-form .wrp-valid {float:left;position:relative;display:none;zoom:1;}
+.db-form .validation {font:italic 11px/14px Arial;padding:4px 0 0 23px;position:absolute;width:350px;}
+.db-form .validation i {background:url('../../images/form-valid.png') no-repeat left top;display:block;height:15px;left:3px;position:absolute;top:4px;width:16px;}
+.message {}
+.db-form  .correct .validation i {background-position:left 0;}
+.db-form  .error .validation i {background-position:left -19px;}
+.db-form  .submit .info {color:#2c2c2c;font:italic 11px/15px Arial;padding: 0 0 0 30px;overflow:hidden;max-width: 60%; float:left\0/ /*ie8hack*/}
+.db-form  .pseudo_link {color:#0079d2;border-bottom:1px dashed;white-space:nowrap;cursor:pointer;text-transform:lowercase;}
+.db-form  .pseudo_link:hover {color:#005899;}
+
+
+.gruz-reg .gruz-reg-form .form-inside-title span {
+    float: left;
+    font-size: 20px;
+    margin-right: 4px;
+}
+
+.gruz-reg .gruz-reg-form .form-inside-title {
+    margin-top: 30px;
+}
+
+.gruz-reg .gruz-reg-form .hr{
+background: url("../../images/hr-gruz-form.png") 0 center repeat-x;
+height: 30px;
+    overflow: hidden;
+}
+
+.gruz-reg .checkboxes .row-title {
+    width: auto;
+}
+
+.gruz-reg .checkboxes input {
+    margin-top: 0;
+}
+
+
+.gruz-reg .gruz-reg-form .agree-flag {
+
+    text-align: center
+}
+
+.gruz-reg .gruz-reg-form .agree-flag label {
+    font-weight: normal;
+    font-style: italic;
+    width: auto;
+    text-align: center;
+    float: none;
+    display: inline-block;
+    zoom: 1;
+    *display: inline;
+    vertical-align: top;
+    margin: 0 auto;
+
+}
+
+.gruz-reg .gruz-reg-form .agree-flag label a {
+    color: #4a4a4a;
+    border-bottom: 1px solid #aaaaaa;
+}
+
+.gruz-reg .gruz-reg-form .agree-flag label a:hover {
+    color: #103f9b;
+    border-bottom-color: #6d8abd;
+}
+
+
+.gruz-reg .gruz-reg-form .agree-flag input {
+    position: relative;
+    top: 2px;
+}
+
+
+.gruz-reg .std-button, .gruz-reg .std-button.disabled:hover {
+    background: url("../../images/btn-yellow.png") 0 0 no-repeat;
+    height: 40px;
+    border: none;
+    font-size: 13px;
+    color: #323232;
+    text-shadow: 0 1px 1px rgba(255,255,255,0.8);
+    font-weight: bold;
+    text-align: center;
+    padding-left: 8px;
+    line-height: 34px;
+    margin-bottom: 15px;
+    float: left;
+    margin-right: 20px;
+}
+
+.gruz-reg .std-button.disabled {
+    background-position: 0 -306px;
+}
+
+.gruz-reg .std-button.disabled i {
+    background-position: right -357px;
+}
+
+.gruz-reg .std-button.disabled:hover {
+    background-position: 0 -306px;
+}
+.gruz-reg .std-button.disabled:active {
+    background-position: 0 -306px;
+}
+
+
+.gruz-reg .std-button.disabled:hover i {
+    background-position: right -357px;
+}
+.gruz-reg .std-button.disabled:active i {
+    background-position: right -357px;
+}
+
+.gruz-reg .std-button.disabled:hover em  {
+  background: none;
+}
+.gruz-reg .std-button.disabled:hover em span {
+   font-size: 15px !important;
+}
+
+
+
+
+.gruz-reg .std-button i {
+    background: url("../../images/btn-yellow.png") right -51px;
+    height: 40px;
+    width: 8px;
+    display: block;
+    position: absolute;
+    right: 0;
+    margin-right: -7px;
+    top: 0;
+}
+
+.gruz-reg .std-button em {
+    background: none;
+    font-weight: normal;
+}
+
+.gruz-reg .std-button em span {
+    font-size: 15px;
+}
+
+.gruz-reg .std-button:hover {
+    background-position: 0 -102px;
+}
+.gruz-reg .std-button:hover i {
+    background-position: right -153px;
+}
+
+.gruz-reg .std-button:active {
+    background-position: 0 -204px;
+    line-height: 36px;
+}
+.gruz-reg .std-button:active i {
+    background-position: right -255px;
+}
+
+.gruz-reg .std-button input {
+    width: 101%;
+    right: -5px;
+}
+
+
+.gruz-reg .login-form {
+    background: url("../../images/login-form-bg.png") 0 0 repeat-x #e6ecea;
+    padding: 15px;
+    position: relative;
+    border-radius: 4px;
+    border-right: 1px solid #d2d7d5;
+    border-left: 1px solid #d2d7d5;
+    border-bottom: 1px solid #b3c3be;
+    margin-top: 50px;
+
+}
+
+.gruz-reg .login-form h2 {
+    font-size: 20px;
+    text-align: center;
+}
+
+.gruz-reg .login-form .std-button {
+    width: 92%;
+}
+
+.after-login {
+    text-align: center;
+}
+
+.gruz-reg .login-form .field {
+    padding-left: 0;
+}
+.gruz-reg .login-form .field input {
+    width: 93%;
+}
+
+.gruz-reg .login-form .field input.text_hint {
+    color: #999;
+}
+
+.gruz-reg .login-form .remember-me {
+    margin-bottom: 15px;
+    display: block;
+    text-align: center;
+    font-style: italic;
+}
+
+.gruz-reg .login-form .remember-me input {
+    position: relative;
+    top: 1px;
+}
+
+.gruz-reg .login-form .rem-pass {
+    font-size: 14px;
+    color: #484848;
+    border-bottom: 1px solid #aaaaaa;
+    margin-top: 5px;
+    display: inline-block;
+    zoom: 1;
+    *display: inline;
+    line-height: 16px;
+}
+
+.gruz-reg .login-form .rem-pass:hover {
+    color: #CA4222;
+    border-bottom-color: #eec2b7;
+}
+
+.gruz-reg .wysiwyg > h4 {
+    margin-top: 0;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.gruz-reg .shadow-left {
+    background: url("../../images/blockquote-shadow.gif") no-repeat scroll 0 0 transparent;
+    bottom: -32px;
+    display: block;
+    height: 32px;
+    left: 0;
+    position: absolute;
+    width: 100%;
+    z-index: 100;
+}
+
+.gruz-reg .shadow-right {
+    background: url("../../images/blockquote-shadow.gif") no-repeat scroll 100% 0 transparent;
+    bottom: -32px;
+    display: block;
+    height: 32px;
+    position: absolute;
+    right: 0;
+    width: 300px;
+    z-index: 101;
+}
+
+.gruz-reg .login-form .shadow, .side-grad-block .shadow {
+    background: url("../../images/login-form-shad.png") center 0 no-repeat;
+    position: absolute;
+    width: 100%;
+    bottom: -29px;
+    left: 0;
+    height: 28px;
+}
+
+
+.press-front .content-main {
+    padding-left: 0;
+}
+
+
+.datepicker-whole-wrp {
+    text-align: center;
+}
+
+.datepicker-whole-wrp h3 {
+    height: 22px;
+    color: #27282c;
+    margin-bottom: 10px;
+}
+
+.datepicker-whole-wrp .datepicker-wrp {
+    background: url("../../images/belzhd-calendar-bg-grad.png") 0 0 repeat-x #e6ecea;
+    text-align: left;
+    word-spacing: -0.36em;
+    border: 1px solid #e2e2e2;
+    padding: 20px 15px;
+    position: relative;
+    margin-bottom: 30px;
+}
+
+.ui-datepicker {
+    margin: 0 auto;
+}
+
+.datepicker-wrp .ui-datepicker-calendar tbody {
+    position: relative;
+    top: 10px;
+}
+
+.datepicker {
+    margin-left: -3%;
+}
+
+.datepicker-wrp .ui-datepicker-group {
+    display: inline-block;
+    zoom: 1;
+    *display: inline;
+    vertical-align: top;
+    width: 30%;
+    margin-left: 3%;
+    text-align: center;
+}
+
+.datepicker-wrp .ui-datepicker-prev, .ui-datepicker-next {
+    display: none;
+}
+
+.datepicker-wrp .ui-datepicker-group .ui-datepicker-calendar {
+    width: 100%;
+    table-layout: fixed;
+}
+
+.datepicker-wrp .ui-datepicker-group .ui-datepicker-calendar td {
+    width: 27px;
+    height: 24px;
+    text-align: center;
+}
+
+.datepicker-wrp .ui-datepicker-group .ui-datepicker-calendar th {
+    color: #92979e;
+    font-size: 12px;
+    height: 24px;
+    text-align: center;
+    vertical-align: top;
+}
+
+.datepicker-wrp .ui-datepicker-calendar th span {
+    border-bottom: 1px solid #92979e;
+    display: inline-block;
+    zoom: 1;
+    *display: inline;
+    vertical-align: bottom;
+    width: 100%;
+    height: 17px;
+}
+
+.datepicker-wrp .ui-datepicker-title {
+    color: #111111;
+    font-size: 14px;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+
+.datepicker-wrp .ui-datepicker-title span {
+    margin-right: 0.4em;
+}
+
+.datepicker-wrp td a {
+    background-color: #adbbc9;
+    margin: 1px;
+    display: block;
+    border: none;
+    text-decoration: none;
+    color: #323746;
+    height: 24px;
+    line-height: 24px;
+    font-size: 13px;
+    cursor: default !important;
+}
+
+/*
+.datepicker-wrp td.ui-datepicker-current-day a {
+    font-weight: bold;
+    color: #ffffff;
+    height: 20px;
+    line-height: 20px;
+    border: 2px solid #1995e3;
+}
+
+.datepicker-wrp td a:hover {
+    background-color: #af1d05;
+    color: #ffffff;
+}
+*/
+
+.datepicker-wrp td.ui-datepicker-unselectable a, .datepicker-wrp td.ui-datepicker-unselectable span {
+    background-color: transparent;
+    color: #8e8e8e;
+}
+
+.datepicker-wrp .ui-datepicker-week-end a{
+    color: #c2351e;
+}
+
+.datepicker-wrp .ui-datepicker-week-end.ui-datepicker-unselectable span {
+    color: #dba59a;
+}
+
+
+.list_towns table {
+    width: 100%;
+}
+.list_towns table tr td:first-child a{
+    border-bottom-style: dashed;
+}
+.list_towns .col2 {
+    width: 30%;
+}
+.list_towns .col3 {
+    width: 30%;
+}
+
+.gruz-reg .checkboxes .row-title label {
+   margin-bottom: 15px;
+	display: inline-block;
+}
+
+.gruz-reg .std-button input {
+    width: 101%;
+	right: -5px;
+	top: 0px;
+}
+
+.gruz-reg .wrp-valid {
+	position: relative;
+	display: inline-block;
+	margin-bottom: 5px;
+	float: none;
+}	
+.gruz-reg .validation {
+	width: 400px;
+	position: relative;
+}
+.gruz-reg .validation i {
+	display: none;
+}
+.gruz-reg .error .validation i{
+	display: block;
+}
+.gruz-reg .error.agree-flag .validation{
+	margin: 0px auto;
+	text-align: left;
+}

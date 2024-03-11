@@ -1,0 +1,380 @@
+
+// �������������
+var autoInterval = '';
+function _turPromo_auto(self, turPromoNav) {
+    var autoTime = self.data('auto') || false;
+    if (autoTime !== false) {
+        clearInterval(autoInterval);
+        autoInterval = setInterval(function () {
+            var next = turPromoNav.find('.active').next();
+            if (next.length === 0) {
+                next = turPromoNav.find('li').first();
+            }
+            next.find('a').click();
+        }, autoTime);
+    }
+}
+function turPromo() {
+    var turPromoBlock = $('.tur-promo-block');
+    if (!turPromoBlock.length) {
+        return false;
+    }
+    turPromoBlock.each(function () {
+        var self = $(this);
+        var turPromoNav = self.find('.tur-promo-nav');
+        var turPromoBlockList = self.find('.tur-promo-block-list');
+        var turPromoBlockItem = turPromoBlockList.find('li');
+        if (turPromoBlockItem.length > 1) {
+            turPromoBlockItem.each(function() {
+                var title = $(this).find('.thumb').attr('title');
+                $('<li><a href=""><span>' + title + '</span></a></li>').appendTo(turPromoNav);
+            });
+            turPromoNav.find(':last-child').addClass('last');
+            turPromoNav.find('li').eq(0).addClass('active');
+            turPromoBlockItem.first().addClass('active');
+        }
+        turPromoNav.css('margin-left', - turPromoNav.outerWidth() / 2).css('left', '50%');
+        turPromoNav.find('a').on('click', function() {
+            turPromoBlockList.find('.active').removeClass('active').fadeOut(400);
+            turPromoBlockList.find('li').eq($(this).parent().index()).css('z-index', '5').fadeIn(400).addClass('active');
+            turPromoNav.find('.active').removeClass('active');
+            $(this).parent().addClass('active');
+            return false;
+        });
+        _turPromo_auto(self, turPromoNav);
+        self.on('mouseenter', function () {
+            clearInterval(autoInterval);
+        });
+        self.on('mouseleave', function () {
+            _turPromo_auto(self, turPromoNav);
+        });
+
+    });
+}
+
+$(document).ready(function(){
+        turPromo();
+
+
+//    console.log(window.location.hash);
+    if (window.location.hash.length) {
+        var ident = window.location.hash;
+        $(ident).parent().next().show().parent().addClass('active');
+    }
+
+
+
+    $('.subscription-tabs li').click(function(){
+    $('.subscription-tabs li').removeClass('active');
+    $('.news-subscription').hide();
+    $(this).addClass('active');
+    $('.news-subscription').eq($(this).index()).show();
+});
+
+$('.subscribtion-footer .selectAll').click(function(){
+   $('.news-subscription:visible').find('input[type=checkbox]').each(function(){
+      $(this).attr('checked', 'checked');
+   });
+});
+
+    $('.subscribtion-footer .deSelectAll').click(function(){
+        $('.news-subscription:visible').find('input[type=checkbox]').each(function(){
+            $(this).removeAttr('checked');
+        });
+    });
+
+
+
+    $('<img class="or-arr" src="/images/orange-arrow.png" alt="" />').prependTo('.menu-item-self, .social-items-img-description');
+
+
+    $('.tours-annons-items').each(function(){
+        $(this).find('.anons-wrp > img').height($(this).find('.anons-wrp > img').parent().height());
+    });
+
+    $('.answer-teaser').find('img').height($('.answer-teaser').find('img').parent().height()+40);
+
+  /*------------------------------------------------------Tabs--------------------------------------------------------*/
+
+    /*------------------------------------------------------SEARCH--------------------------------------------------------*/
+    $('#searchinpm').focus(function(){
+        $(this).addClass('active');
+    });
+    $('#searchinpm').blur(function(){
+        $(this).removeClass('active');
+    });
+
+
+
+    /*------------------------------------------------------Legend--------------------------------------------------------*/
+
+    function legendSize(){
+        if ($('.content').width() < 1356) {
+            $('.perevoz-legend, .big-bg-map, .big-bg-map .page-content').addClass('small');
+
+        }
+        else {
+            $('.perevoz-legend, .big-bg-map, .big-bg-map .page-content').removeClass('small');
+        }
+    }
+
+    legendSize();
+    $(window).resize(function(){
+        legendSize();
+    });
+
+    /*------------------------------------------------------User-reviews--------------------------------------------------------*/
+
+    $('.user-review .see-more-toggler').click(function(){
+        var text = $(this).next().html();
+        var text2 = $(this).prev().html();
+        
+        var textHeight = $(this).parent().height();
+        
+        $(this).parent().css('height', textHeight);
+        
+        $(this).prev().html(text);
+        $(this).next().html(text2);
+        $(this).parent().animate({height: $(this).prev().height()}, 200);
+        
+        $(this).toggleClass('open');
+        if ($(this).hasClass('open')){
+            $(this).text(lang_consts.basic246);
+        }
+        else {
+            $(this).text(lang_consts.truck201);
+        }
+        return false;
+    });
+
+    $('.user-review .see-more-toggler').each(function(){
+    if ($(this).parent().find('.hidden-text').length)
+        $(this).show();
+    });
+
+
+    /*------------------------------------------------------Filters--------------------------------------------------------*/
+
+    /*------------------------------------------------------Filters--------------------------------------------------------*/
+
+    var filters = $('.filters');
+    var filter1 = $('.filters .filter-1');
+    var filter2 = $('.filters .filter-2');
+    var rezult_table = $('#table_companies');
+    var filtersBtn = filters.find('a');
+    var filterActive = '';
+
+
+    filtersBtn.click(function(){
+        rezult_table.removeClass('show-all');
+        $(this).parents('ul').find('li:first').removeClass('active');
+        if ($(this).parent().parent().hasClass('filter-2')){
+            $(this).parent().parent().find('li').removeClass('active');
+        }
+        $(this).parent().toggleClass('active');
+
+        /*if (filter1.find('li').length - 1 == filter1.find('li.active').length) {
+            filter1.find('li').removeClass('active');
+            filter1.find('li:first').addClass('active');
+            if (filter2.find('li:first').hasClass('active')) {
+                rezult_table.addClass('show-all');
+            }
+        }*/
+        if (filter1.find('li:first').hasClass('active')){
+            filter1.find('li').removeClass('active');
+            filter1.find('li:first').addClass('active');
+        }
+        filterSearch();
+        rezult_table.find('tr').hide();
+        if (filter1.find('li:first').hasClass('active') && filter2.find('li:first').hasClass('active')) {
+            rezult_table.find('tr').show();
+        }
+        rezult_table.find('tr').filter(filterActive).show();
+
+
+
+
+        return false;
+    });
+
+
+    function filterSearch(){
+        filterActive = '';
+        if (!filter1.find('li:first').hasClass('active')) {
+            filter1.find('.active').each(function(){
+                filterActive = filterActive +'.'+ $(this).find('a').attr('class');
+            });
+        }
+        if (!filter2.find('li:first').hasClass('active')) {
+            filterActive = filterActive + '.' + filter2.find('.active').find('a').attr('class');
+        }
+    }
+    /*    filter1.find('a').click(function(){
+
+     if (filter1.find('li').length - 1 == filter1.find('li.active').length) {
+     filter1.find('li').removeClass('active');
+     filter1.find('li:first').addClass('active');
+     if (filter2.find('li:first').hasClass('active')) {
+     rezult_table.addClass('show-all');
+     }
+     }
+     return false;
+     });
+
+     filter1.find('a:first').click(function(){
+     filter1.find('li').removeClass('active');
+     $(this).parent().addClass('active');
+     return false;
+     });
+
+     */
+
+
+
+
+function sitemapMenuChange(x) {
+    var sitemap = $('.popup-site-map');
+    var sitemapBlocks = sitemap.find('.menu-section-wrapper');
+    sitemapBlocks.hide();
+    sitemap.find('.menu-section-wrapper').eq(x).show();
+}
+
+
+    $('.popup-site-map .tabs-wrapper ul li').click(function(){
+        var x = $(this).index();
+        sitemapMenuChange(x);
+    });
+
+
+
+
+
+    $('.gruz-news').each(function(){
+        if ($(this).find('a').find('img').length) {
+            $(this).removeClass('no-image')
+        }
+    });
+
+    /*$('<span class="radAlert">*</span>').insertBefore($('.val_required, .val_checkbox, .val_radio, .val_mail').parents('.field').prev());*/
+
+
+    $('.stations-services-wrp').find('img:first').height($('.stations-services-wrp').height());
+
+
+
+    /*frm-builder*/
+    $('.frm_bldr').find('.else-text+input').focus(function(){
+        $(this).addClass('active');
+        $(this).prev().prev().attr('checked', 'checked');
+    });
+
+    $('.frm_bldr .radio input[type=radio]').click(function(){
+        if ($(this).next('.else-text').length) {
+            $(this).next().next().addClass('active');
+        }
+        else {
+            $(this).parent().parent().find('.else-text').next().removeClass('active');
+        }
+    });
+
+    $('.frm_bldr .checkbox input[type=checkbox]').change(function(){
+        $(this).next().next().toggleClass('active');
+    });
+
+});
+
+$(window).load(function(){
+
+    var stationServTabs = $('.station-serv-tabs');
+    stationServTabs.find('.tab').not('.active').hide();
+    stationServTabs.find('.thead a').click(function(){
+        stationServTabs.find('.thead, .tab').removeClass('active');
+        $(this).parent().addClass('active');
+        stationServTabs.find('.tab').hide().eq($(this).parent().index()).show().addClass('active');
+        return false;
+    });
+
+    stationServTabs.find('dt.active').click(function(){
+        return false;
+    });
+
+    $("ul.lang-select").hide();
+
+    if ($('.datepicker').length){
+        $('.datepicker').datepicker({
+            numberOfMonths: [1, 3],
+            maxDate: 44,
+            minDate: 0
+        });
+    }
+
+    if ($('#datepicker60').length){
+        $('#datepicker60').datepicker({
+            numberOfMonths: [1, 3],
+            maxDate: 59,
+            minDate: 0
+        });
+    }
+    if ($('#datepicker45').length){
+        $('#datepicker45').datepicker({
+            numberOfMonths: [1, 3],
+            maxDate: 44,
+            minDate: 0
+        });
+    }
+    if ($('#datepicker20').length){
+        $('#datepicker20').datepicker({
+            numberOfMonths: [1, 3],
+            maxDate: 19,
+            minDate: 0
+        });
+    }
+    if ($('#datepicker10').length){
+        $('#datepicker10').datepicker({
+            numberOfMonths: [1, 3],
+            maxDate: 9,
+            minDate: 0
+        });
+    }
+
+
+    if ($('.datepicker-popup').length)
+        $('.datepicker-popup').datepicker({
+              //changeMonth: true
+//            numberOfMonths: [1, 3]
+        });
+        
+        $('a.calendar').prev().click(function(){
+          $(this).datepicker("show");
+        });
+
+});
+
+
+
+
+/* Russian (UTF-8) initialisation for the jQuery UI date picker plugin. */
+/* Written by Andrew Stromnov (stromnov@gmail.com). */
+jQuery(function($){
+    if ($('.datepicker').length || $('.datepicker-popup').length || $('#datepicker60').length || $('#datepicker45').length || $('#datepicker20').length || $('#datepicker10').length) {
+        $.datepicker.regional['ru'] = {
+            closeText: lang_consts.basic8,
+            prevText: '&#x3c;'+lang_consts.basic247,
+            nextText: lang_consts.basic248+'&#x3e;',
+            currentText: lang_consts.date249,
+            monthNames: [lang_consts.date250,lang_consts.date251,lang_consts.date252,lang_consts.date253,lang_consts.date254,lang_consts.date255,
+								lang_consts.date256,lang_consts.date257,lang_consts.date258,lang_consts.date259,lang_consts.date260,lang_consts.date261],
+            monthNamesShort: [lang_consts.date262,lang_consts.date263,lang_consts.date264,lang_consts.date265,lang_consts.date266,lang_consts.date267,
+									lang_consts.date268,lang_consts.date269,lang_consts.date270,lang_consts.date271,lang_consts.date272,lang_consts.date273],
+            dayNames: [lang_consts.date274,lang_consts.date275,lang_consts.date276,lang_consts.date277,lang_consts.date278,lang_consts.date279,lang_consts.date280],
+            dayNamesShort: [lang_consts.date281,lang_consts.date282,lang_consts.date283,lang_consts.date284,lang_consts.date285,lang_consts.date286,lang_consts.date287],
+            dayNamesMin: [lang_consts.date288,lang_consts.date289,lang_consts.date290,lang_consts.date291,lang_consts.date292,lang_consts.date293,lang_consts.date294],
+            weekHeader: lang_consts.date295,
+            dateFormat: 'dd.mm.yy',
+            firstDay: 1,
+            isRTL: false,
+            showMonthAfterYear: false,
+            yearSuffix: ''};
+        $.datepicker.setDefaults($.datepicker.regional['ru']);
+    }
+});

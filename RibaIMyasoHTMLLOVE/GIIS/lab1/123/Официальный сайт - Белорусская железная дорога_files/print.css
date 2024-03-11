@@ -1,0 +1,32 @@
+/* -----------------------------------------------------------------------
+
+
+ Blueprint CSS Framework 1.0.1
+ http://blueprintcss.org
+
+   * Copyright (c) 2007-Present. See LICENSE for more info.
+   * See README for instructions on how to use Blueprint.
+   * For credits and origins, see AUTHORS.
+   * This is a compressed file. See the sources in the 'src' directory.
+
+----------------------------------------------------------------------- */
+
+/* print.css */
+body {line-height:1.5;font-family:"Helvetica Neue", Arial, Helvetica, sans-serif;color:#000;background:none;font-size:10pt;}
+.container {background:none;}
+hr {background:#ccc;color:#ccc;width:100%;height:2px;margin:2em 0;padding:0;border:none;}
+hr.space {background:#fff;color:#fff;visibility:hidden;}
+.main-wrapper .content h1, .main-wrapper .content h1 a, .main-wrapper .content h2, .main-wrapper .content h2 a, .main-wrapper .content h3 a, .main-wrapper .content h3, .main-wrapper .content h4 a, .main-wrapper .content h4, .main-wrapper .content h5, .main-wrapper .content h5 a, .main-wrapper .content h6, .main-wrapper .content h6 a {font-family: 'Arial', sans-serif;}
+code {font:.9em "Courier New", Monaco, Courier, monospace;}
+a img {border:none;}
+p img.top {margin-top:0;}
+blockquote {margin:1.5em;padding:1em;font-style:italic;font-size:.9em;}
+.small {font-size:.9em;}
+.large {font-size:1.1em;}
+.quiet {color:#999;}
+.hide {display:none;}
+.main-menu-margin, .promo-nav, .right-col, .main-menu, .index-tabs, .search-space, .strange-shadow, .nav-years, .side-help-ask, .sidebar-right, .side-menu, .tur-promo-block-wrp, .with-ramp, .partners-logo-wrp, .gruz-user-review, .press-centre-slider-wrap, .filters, .four-cols-menu, .month-pager-wrap, .inner-top, .bread, .content-nav, .content-splash, .teaser-new-format, .top-tools, .bread, .rss, .other-title, .footer-extra, .page-tools, .footer {display:none;}
+/*a:link, a:visited {background:transparent;font-weight:700;text-decoration:underline;}*/
+/*a:link:after, a:visited:after {content:" (" attr(href) ")";font-size:90%;}*/
+
+

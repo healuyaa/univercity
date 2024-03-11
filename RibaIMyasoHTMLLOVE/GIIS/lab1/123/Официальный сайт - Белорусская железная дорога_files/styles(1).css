@@ -1,0 +1,139 @@
+.files-download {
+  padding: 0px 50px 0px 0px;
+}
+
+.files-download div {
+  overflow: hidden;
+}
+
+.files-download a {
+  margin: 0px 0px 10px;
+  min-height: 50px;
+  padding: 0 0px 0px 48px;
+  float: left;
+  font: 14px/18px Arial;
+  text-decoration: none;
+  border: none;
+  clear: left;
+}
+
+.files-download a span {
+  padding-right: 4px;
+  text-decoration: none;
+  color: #2E4F9D;
+  border-bottom: 1px solid #C0CAE1;
+  text-decoration: none;
+}
+
+.files-download a:hover span {
+  color: #CA4222 !important;
+  border-bottom: 1px solid #EEC2B7 !important;
+}
+
+.files-download i {
+  font: normal 12px/10px Arial;
+  color: #999;
+  display: inline;
+  *zoom: 1;
+  *margin-top: 3px;
+  *padding-bottom: 2px;
+}
+
+/*.files-download a.pdf {
+  background: url(’/images/icon-pdf.png’) no-repeat left top;
+}
+
+.files-download a.doc {
+  background: url(’/images/icon-doc.png’) no-repeat left top;
+}
+
+.files-download a.gif {
+  background: url(’/images/icon-gif.png’) no-repeat left top;
+}
+
+.files-download a.jpg {
+  background: url(’/images/icon-jpg.png’) no-repeat left top;
+}
+
+.files-download a.ppt {
+  background: url(’/images/icon-ppt.png’) no-repeat left top;
+}
+
+.files-download a.rar {
+  background: url(’/images/icon-rar.png’) no-repeat left top;
+}
+
+.files-download a.xls {
+  background: url(’/images/icon-xls.png’) no-repeat left top;
+}
+
+.files-download a.cdr {
+  background: url(’/images/icon-cdr.png’) no-repeat left top;
+}
+
+.files-download a.zip {
+  background: url(’/images/icon-zip.png’) no-repeat left top;
+}*/
+
+.wysiwyg .blockquote-wrap div {
+  overflow: hidden;
+}
+
+.wysiwyg .blockquote-wrap div {
+  overflow: hidden;
+}
+
+.bx-editor .wysiwyg blockquote {
+  background: rgba(0, 0, 0, 0) -moz-linear-gradient(center top, #e7f5fe 0%, #dcedfe 100%) repeat scroll 0 0;
+  border-radius: 5px;
+  color: #2c3236;
+  font-family: Georgia, serif;
+  font-size: 1.071em;
+  font-style: italic;
+  margin: 0 0 3em;
+  padding: 25px 34px 30px;
+}
+
+.blue-table{
+
+}
+
+table.blue-table {
+    margin-bottom: 1.9em;
+    width: 100%;
+    border-collapse: collapse;
+}
+.blue-table th, .blue-table tr:first-child{
+    font-weight: bold;
+}
+.blue-table tr:first-child, .blue-table tr:hover:first-child td, .blue-table thead th {
+    background: #869dc5;
+    color:#fff
+}
+
+.blue-table th, .blue-table td, .blue-table caption {
+    padding: 7px 12px;
+}
+.blue-table th {
+    border-bottom: 1px solid #2a5199;
+    background: #869dc5;
+    font-weight: bold;
+    color: #fff;
+    font-size: 12px;
+}
+.blue-table td {
+    border-bottom: 1px solid #e4e4e4;
+    font-size: 13px;
+}
+.blue-table tfoot {
+    font-style: italic;
+}
+
+.blue-table caption {
+    background: #eee;
+}
+
+.blue-table tr:hover td{
+    background: #ebf0f8;
+
+}

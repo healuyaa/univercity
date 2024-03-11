@@ -1,0 +1,202 @@
+var arrStations = new Array();
+
+$(document).ready(function () {
+
+    if ($.browser.msie && $.browser.version > 6 && $.browser.version < 9 ){
+    var licolumn = $('.services-icons > li');
+
+    var licolumnResize = function(){
+        var widthbody = $("body").width();
+        if (widthbody < 1200) {
+
+            licolumn.css({'width':'100%','paddingLeft':'0'});
+        }else{
+            licolumn.css('width','46%').eq(1).css('paddingLeft','7%');
+
+        }
+        
+    };
+    licolumnResize();
+
+    $(window).resize(licolumnResize);
+    };
+
+    //press-center tabs
+    /* 
+    (function(){
+      var sliderWrap = $('.press-centre-slider-wrap');
+      if(sliderWrap.length){
+      
+        var slideContainer = sliderWrap.find('.press-centre-slider'),
+          slider = slideContainer.find('.slider-content'),
+          filter = slideContainer.find('.filter'),
+          items = slider.find('li');
+        
+        var fredConf = {
+          circular:false,
+          infinite:false,
+          auto:false,
+          responsive:true,
+          scroll:{
+            items:2,
+            fx:'scroll'
+          },
+           items:{
+            width:240,
+            visible:{
+              min:2,
+              max:5
+            }
+          },
+          next: sliderWrap.find('.but-next'),
+          prev: sliderWrap.find('.but-prev')
+        }
+        
+        slider.carouFredSel(fredConf);
+      
+        filter.on('click','li',function(e){
+          e.preventDefault();
+          e.stopPropagation();
+            var objUrl = $(this).find('a').attr('href');
+
+            $(this).addClass('active').siblings().removeClass('active');
+            
+            slider.fadeTo(150,0,function(){
+            
+            slider.html('').trigger('destroy');
+
+              $.ajax({
+                  type: "POST",
+                  url: objUrl,
+                  data: {ajax: 1},
+                  beforesend: '',
+                  success: function(data) {
+                 // console.log(data);
+                    items = $(data).find('.slider-content li');
+
+                    slider.html(items).carouFredSel(fredConf).fadeTo(150,1);
+                  }
+              });
+              
+            });
+
+            return false;
+        });
+        
+      }
+    })();
+    //*/
+    
+    
+    if ($('#alert_msg').length) {
+        var fl = true;
+        if ($('#alert_flag').length && $('#alert_flag').val() == 'error') fl = false;
+        alertBox($('#alert_msg').text(), fl)
+    }
+	 
+	 $('.next_code').click(function(){
+		var r = Math.floor(Math.random()*10000) + 100;
+		$(this).parent().find('img').attr('src', '/scripts/kcaptcha/index.php?r='+r);
+		return false;
+	});
+
+
+
+    // расписание
+/*	 
+    if ($('#tickets_form').length) {
+        var tForm = $('#fTickets');
+        var inputFrom = $('#acFrom');
+        var inputTo = $('#acTo');
+        var inputStation = $('#acStation');
+        var inputDate = $('.yDate');
+//        var lang = $('#acLocale');
+        var lang = 1;
+
+
+//        var url = "/autocomplete.php?locale="+lang;
+
+        var option = {
+            delay:10,
+            minChars:1,
+            matchSubset:1,
+            matchContains:1,
+            cacheLength:10,
+            selectFirst:true,
+            maxItemsToShow:10
+        };
+
+        $(inputFrom).focus().autocomplete(arrStations, option);
+        $(inputTo).autocomplete(arrStations, option);
+        $(inputStation).focus().autocomplete(arrStations, option);
+
+
+      // $(inputFrom).focus().autocomplete(url, option);
+       // $(inputTo).autocomplete(url, option);
+       // $(inputStation).focus().autocomplete(url, option);
+
+        if ($('.tt-filters').length) {
+            var tf = $('.tt-filters');
+            var ttable = $('.tt-station-thread');
+            $('a', tf).click(function(){
+                var cl = $(this).attr('id');
+                if (cl != '' && cl != undefined) {
+                    $('tbody tr',ttable).hide();
+                    $('tr.tt-'+cl,ttable).show();
+                } else {
+                    $('tbody tr',ttable).show();
+                }
+                $('.current',tf).removeClass('current');
+                $(this).addClass('current');
+
+                return false;
+            });
+        }
+
+    }
+//*/
+
+    $('#tip-from a').click(function() {
+        $('#acFrom').val($(this).text());
+        $('#acFrom').focus();
+        return false;
+    });
+    $('#tip-to a').click(function() {
+        $('#acTo').val($(this).text());
+        $('#acTo').focus();
+        return false;
+    });
+    $('#tip-station a').click(function() {
+        $('#acStation').val($(this).text());
+        $('#acStation').focus();
+        return false;
+    });
+
+});
+
+
+function alertBox(msg, flagError) {
+	if (msg.indexOf('lang_consts.') != -1) {
+		msg = msg.replace("lang_consts.","");
+		msg = lang_consts[msg];
+	}
+	var clName = "msgOK";
+	if (flagError) clName = "msgError";
+	$.stickr({note:msg, className: clName, position:{left:100,top:100}});
+}
+
+
+function send_email_no_tickets(email) {
+	if (email) {
+		$.ajax({
+			  type: "POST",
+			  url: "/feedback.php",
+			  data: {email: email, val: '', ajax: 1, action: 'send_email_no_tickets'},
+			  success: function(data) {
+				  return false;
+			  }
+		 });
+	}
+	return false;
+}
+

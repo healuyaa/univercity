@@ -1,0 +1,71 @@
+/** --------------------------------------------------
+*/
+/*.ac_input {
+    width: 95%;
+    float: left;
+}
+
+.autocomplete .i-btn {
+    background:url("../../images/search-btn.png") no-repeat scroll 0 0 transparent;
+    border:0 none;
+    float:left;
+    height:22px;
+    width:21px;
+}*/
+
+/** --------------------------------------------------
+*/
+
+
+.ac_results {
+	padding: 0px;
+	border: 1px solid #838487;
+	border-radius: 4px;
+	-moz-border-radius: 4px;
+	-o-border-radius: 4px;
+	-webkit-border-radius: 4px;
+	background-color: white;
+	overflow: hidden;
+	z-index: 99999;
+}
+
+.ac_results ul {
+	width: 100%;
+	list-style-position: outside;
+	list-style: none;
+	padding: 0;
+	margin: 0;
+}
+
+.ac_results li {
+	margin: 0px;
+	padding: 2px 5px;
+	color: #838487;
+	cursor: default;
+	display: block;
+	/*
+	if width will be 100% horizontal scrollbar will apear
+	when scroll mode will be used
+	*/
+	/*width: 100%;*/
+	font: 12px Tahoma, Geneva, sans-serif;
+	/*
+	it is very important, if line-height not setted or setted
+	in relative units scroll will be broken in firefox
+	*/
+	line-height: 16px;
+	overflow: hidden;
+}
+
+.ac_loading {
+	background: white url('/images/indicator.gif') right center no-repeat;
+}
+
+.ac_odd {
+	background-color: #eee;
+}
+
+.ac_results .ac_over {
+	background-color: #2E4F9D;
+	color: #fff;
+}

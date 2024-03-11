@@ -309,7 +309,7 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
     </CustomBuild>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="C:\project\project_cmake\SSP_2\main.cpp" />
+    <ClCompile Include="C:\project\project_cmake\SSP_2\main1_lab.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="C:\project\project_cmake\SSP_2\build\ZERO_CHECK.vcxproj">

@@ -1,0 +1,15 @@
+BEGIN:VCARD
+VERSION:3.0
+FN:John Doe
+ORG:ABC Corporation
+TITLE:Manager
+TEL:+123456789
+EMAIL:john.doe@example.com
+ADR:Klausland
+URL:http://www.example.com
+BDAY:19900101
+PHOTO;TYPE=JPEG:http://www.example.com/photo.jpg
+NOTE:This is a note about John Doe.
+CATEGORY:Work
+LABEL:Work Address - 123 Main Street, Cityville, State, 12345, USA
+END:VCARD

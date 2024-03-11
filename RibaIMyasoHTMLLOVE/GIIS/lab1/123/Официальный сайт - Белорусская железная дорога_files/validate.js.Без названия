@@ -1,0 +1,365 @@
+/*
+обязательное поле - val_required
+проверка email - val_email
+проверка длины строки - val_length + длина строки - min_length_100
+проверка числа - val_number, миницум - number_min_10, максимум - number_max_100
+проверка файла - val_file + тип файла - file_jpg file_doc и т.д.
+проверка одинаковых паролей - val_password
+проверка чекбокса - val_checkbox
+проверка радиобаттона - val_radio
+*/
+
+var validate_timer;
+var validate_timer_ms = 2000;
+var validate_timer_obj;
+var needValidate = new Array();
+var checkArray = new Array();
+
+function checkFormError(obj, arr) {
+	var errorFlag = false;
+	var errorText = '';
+	var errorType = '';
+	for (c=0;c<arr.length;c++) {
+		if (arr[c] == 'required' &&
+                    (obj.val().length < 1) ||
+                    (obj.val().length >= 1 && obj.attr("title") == obj.val())
+            ) {
+			errorFlag = true;
+			errorType = arr[c];
+			errorText = lang_consts.form212;
+		}
+		var regemail = new RegExp("^[0-9a-z_\.\-]+@[0-9a-z_^\\.\-]+\\.[a-z]{2,6}$", 'i');
+		if (!errorFlag && arr[c] == 'email' && obj.val() && !regemail.test(obj.val())) {
+			errorFlag = true;
+			errorType = arr[c];
+			errorText = lang_consts.form213;
+		}
+		if (!errorFlag && arr[c] == 'number' && parseInt(obj.val()) != obj.val()) {
+			errorFlag = true;
+			errorType = arr[c];
+			errorText = lang_consts.form222;
+		}
+        if (!errorFlag && obj.val() == 'falseSelect') {
+			errorFlag = true;
+			errorType = arr[c];
+			errorText = lang_consts.form223;
+		}
+		if (!errorFlag && arr[c] == 'number')
+		{
+			errorFlag = false;
+			errorType = arr[c];
+			var val = obj.val();
+			var classes = obj.attr('class').split(' ');
+			var bad_min = false;
+			var bad_max = false;
+			var exist_min = false;
+			var exist_max = false;
+			for (j=0;j<classes.length;j++) {
+				if (classes[j].indexOf('number_min_') == 0) {
+					exist_min = true;
+					var minval = classes[j].substr(11, classes[j].length - 11);
+					if (parseInt(obj.val()) < minval) bad_min = true;
+				}
+				if (classes[j].indexOf('number_max_') == 0) {
+					exist_max = true;
+					var maxval = classes[j].substr(11, classes[j].length - 11);
+					if (parseInt(obj.val()) > maxval) bad_max = true;
+				}
+			}
+			if (exist_min && exist_max && (bad_min || bad_max)) {
+				errorFlag = true;
+				errorType = arr[c];
+				errorText = lang_consts.form224 + ' '+minval+' '+lang_consts.form225+' '+maxval;
+			}else if (bad_min) {
+				errorFlag = true;
+				errorType = arr[c];
+				errorText = lang_consts.form226+' '+minval;
+			}else if (bad_max) {
+				errorFlag = true;
+				errorType = arr[c];
+				errorText = lang_consts.form227+' '+maxval;
+			}
+		}
+		if (!errorFlag && arr[c] == 'file')
+		{
+			var val = obj.val();
+			var extensions = obj.attr('class').split(' ');
+			var badExtension = true;
+			var file_types = '';
+			for (j=0;j<extensions.length;j++)
+				if (extensions[j].indexOf('file_') == 0) {
+					var checkExt = extensions[j].substr(5, extensions[j].length - 5);
+					file_types = file_types + checkExt + ', ';
+					var fileExt;
+					var posExt = val.lastIndexOf('.');
+					if (posExt >= 0) fileExt = val.substr(posExt + 1, val.length - posExt - 1);
+					if (fileExt) fileExt = fileExt.toLowerCase();
+					if (fileExt == checkExt) badExtension = false;
+				}
+			if (badExtension) {
+				errorFlag = true;
+				errorType = arr[c];
+				errorText = lang_consts.form228 + ' '+file_types.substr(0, file_types.length - 2);
+			}
+		}
+		if (!errorFlag && arr[c] == 'length')
+		{
+			var val = obj.val();
+			var classes = obj.attr('class').split(' ');
+			var badLength = false;
+			for (j=0;j<classes.length;j++)
+				if (classes[j].indexOf('min_length_') == 0) {
+					var minlength = classes[j].substr(11, classes[j].length - 11);
+					if (val.length >= 0 && val.length < minlength) badLength = true;
+				}
+			if (badLength) {
+				errorFlag = true;
+				errorType = arr[c];
+				errorText = lang_consts.form229 + ' '+minlength+' ' + lang_consts.form230;
+			}
+		}
+		if (!errorFlag && arr[c] == 'password')
+		{
+			var fields = obj.parent().parent().parent().find('input[type=password]');
+			for (j=0;j<fields.length;j++)
+				if (fields.eq(j).val() != '' && fields.eq(j).val() != obj.val()) {
+					errorFlag = true;
+					errorType = arr[c];
+					errorText = lang_consts.form231;
+				}
+		}
+		if (!errorFlag && arr[c] == 'checkbox') {
+//			if (obj.attr('checked') != 'checked') {
+            if (obj.parents(".multi-row").length && !obj.parents(".multi-row").find("input.val_checkbox").filter(':checked').length) {
+				errorFlag = true;
+				errorType = arr[c];
+				errorText = lang_consts.form232;
+			} else if (!obj.parents(".multi-row").length && !obj.attr('checked')) {
+				errorFlag = true;
+				errorType = arr[c];
+				errorText = lang_consts.form232;
+			}
+		}
+		if (!errorFlag && arr[c] == 'radio') {
+//			if (obj.attr('checked') != 'checked') {
+			if (!obj.attr('checked')) {
+				errorFlag = true;
+				errorType = arr[c];
+				errorText = lang_consts.form212;
+			}
+		}
+	}
+
+//    console.log('errorFlag: ' + errorFlag);
+//    console.log('errorType: ' + errorType);
+//    console.log('errorText: ' + errorText);
+
+
+	if (errorFlag) {
+		if (errorType == 'password') {
+			obj.parent().parent().removeClass('error').addClass('correct');
+			$('span.error_'+obj.attr('name'), obj.parent().parent().parent()).remove();
+			obj = obj.parent().parent().parent().find('input[type=password]:last');
+		}
+		if (!obj.parent().parent().hasClass('error')) {
+			obj.parent().parent().removeClass('correct').addClass('error');
+   			obj.parent().next().find('i').after($('<span class="comment error-txt error error_type_'+errorType+' error_'+obj.attr('name')+'">'+errorText+'</span>'));
+		} else {
+			$('span.error_'+obj.attr('name'), obj.parent().parent()).html(errorText);
+		}
+		if (errorType == 'password')
+			showMessageFilling(obj);
+	} else {
+		if (obj.hasClass('val_password')) {
+			var fields = obj.parent().parent().parent().find('input[type=password]');
+			for (j=0;j<fields.length;j++) {				
+				if ($('span.error_'+fields.eq(j).attr('name')).text() == lang_consts.form231) {
+					$('span.error_'+fields.eq(j).attr('name')).parent().parent().parent().removeClass('error').addClass('correct');
+					$('span.error_'+fields.eq(j).attr('name')).remove();					
+				}
+				showMessageFilling(fields.eq(j));
+			}
+		}
+		if (!obj.parent().parent().hasClass('correct')) {
+			obj.parent().parent().removeClass('error').addClass('correct');
+		        $('span.error_'+obj.attr('name'), obj.parent().parent()).remove();
+		}
+	}
+	return errorFlag;
+}
+
+function checkSubmitBtn(btn, arr) {
+	var errorFlag = false;
+	for (c=0;c<arr.length;c++) {
+		if (!arr[c].parent().parent().hasClass('correct')) 
+			errorFlag = true;
+	}
+	if (!errorFlag) 
+		enableSubmitButtom(btn)
+	else 
+		disableSubmitButtom(btn);
+}
+
+function disableSubmitButtom(btn) {
+	btn.attr('disabled', 'disabled');
+	if (!btn.hasClass('disabled')) 
+		btn.addClass('disabled');
+	if (!btn.parent().hasClass('disabled')) 
+		btn.parent().addClass('disabled');
+}
+
+function enableSubmitButtom(btn) {
+	btn.removeAttr('disabled').removeClass('disabled');
+	btn.parent().removeClass('disabled');
+}
+
+function showMessageFilling(obj) {
+	var formId = obj.closest('form').attr('id');
+	var info = $('#'+formId).find('.info');
+	var text = obj.parent().parent().find('.message_filling').text();
+	if (!text) {
+		text = obj.parent().parent().find('.label').find('label').text();
+		text = text.replace('*', '');
+	}
+	var name = obj.attr('name');
+	if (text && name) {
+		var cl = 'msg_'+name;
+		if (!$('.'+cl, info).length)
+			info.append('<span onclick="gotoForm(\''+formId+'\',\''+name+'\')" class="pseudo_link msgfill_show '+cl+'">'+text+'</span><span class="comma_show">, </span>');
+		if (obj.parent().parent().hasClass('correct') && !obj.parent().parent().find('.wrp-valid').hasClass('hide'))
+			$('.'+cl, info).hide().removeClass('msgfill_show').next().hide().removeClass('comma_show');
+		else 
+			$('.'+cl, info).show().addClass('msgfill_show').next().show().addClass('comma_show');			
+	}	
+	$('.comma_show', info).show();
+	$('.comma_show:last', info).hide();
+	if ($('.msgfill_show', info).length) 
+		info.show();
+	else
+		info.hide();
+}
+
+function gotoForm (form_id, widget_name) {
+	if($(window).scrollTop() < $('#' + form_id ).find('[name='+ widget_name+']').offset().top){
+		$('#' + form_id).find('[name='+ widget_name+']').get(0).focus();
+	} else {
+		$('html,body').animate({'scrollTop':Math.round($('#' + form_id).find('[name='+ widget_name+']').offset().top)}, 700, 'swing',function(){
+			$('#' + form_id).find('[name='+ widget_name+']').get(0).focus();
+		})
+	}
+}
+
+function checkErrors(obj) {	
+	var i = -1;
+	checkArray = new Array();
+	if (obj.hasClass('val_required')) {i++;checkArray[i] = 'required';}
+	if (obj.hasClass('val_email')) {i++;checkArray[i] = 'email';}
+	if (obj.hasClass('val_number')) {i++;checkArray[i] = 'number';}
+	if (obj.hasClass('val_length')) {i++;checkArray[i] = 'length';}
+	if (obj.hasClass('val_password')) {i++;checkArray[i] = 'password';}
+	if (obj.hasClass('val_file')) {i++;checkArray[i] = 'file';}
+	if (obj.hasClass('val_checkbox')) {i++;checkArray[i] = 'checkbox';}
+	if (obj.hasClass('val_radio')) {i++;checkArray[i] = 'radio';}
+	checkFormError(obj, checkArray);
+	var elem = obj.closest('form');
+	checkSubmitBtn($('input[type=submit]', elem), needValidate[elem.attr('id')]);					
+	showMessageFilling(obj);
+}
+
+function showError() {	
+	if (validate_timer_obj) {
+		validate_timer_obj.parent().parent().find('.wrp-valid').removeClass('hide').show();
+		showMessageFilling(validate_timer_obj);
+	}
+}
+
+function feedformval(formId, ajaxSubmit) {
+	if (!formId || !$('#'+formId).length) return false;
+
+	if (ajaxSubmit) $('#'+formId+' .block_hidden').append('<input name="ajax" value="" type="hidden" />');
+
+	$(function() {
+		var form = $("#"+formId);
+		var inputs = $("input[type='text'], input[type='password'], input[type='file'], input[type='checkbox'], input[type='radio'], textarea, select", form);
+		var btn = $('input[type=submit]', form);
+
+		if (inputs.length) {
+			var i = -1;
+			needValidate[formId] = new Array();
+			inputs.each(function(){
+				if ($(this).hasClass('val_required') || $(this).hasClass('val_email') || $(this).hasClass('val_number') ||
+                    $(this).hasClass('val_length') || $(this).hasClass('val_password') || $(this).hasClass('val_file') ||
+                    $(this).hasClass('val_checkbox') || $(this).hasClass('val_radio')) {
+					i++;
+					needValidate[formId][i] = $(this);
+				}
+			});
+
+			if (needValidate[formId].length) {
+				btn.attr('disabled', 'disabled').addClass('disabled');
+				btn.parent().addClass('disabled');
+
+				for (var j_counter = 0; j_counter < needValidate[formId].length; j_counter++) {
+					$(needValidate[formId][j_counter]).bind('keyup paste focus blur change', function() {
+						checkErrors($(this));
+					});
+					$(needValidate[formId][j_counter]).blur();								
+					
+					$('#'+formId).find('.wrp-valid').addClass('hide').hide();
+					
+					$(needValidate[formId][j_counter]).bind('keyup paste focus change', function() {					
+						if ($(this).parent().parent().find('.wrp-valid').hasClass('hide')) {
+							window.clearTimeout(validate_timer);
+							validate_timer_obj = $(this);
+							validate_timer = window.setTimeout("showError();", validate_timer_ms);
+						}
+					});
+					
+					$(needValidate[formId][j_counter]).bind('blur', function() {					
+						window.clearTimeout(validate_timer);
+						showError($(this));
+					});					
+				}				
+			}
+
+			if (ajaxSubmit) {		
+				form.submit(function() {
+					disableSubmitButtom($('input:submit', form));
+					var formPostedId = form.attr('id');
+					$.post(
+						form.attr('action'),
+						form.serializeArray(),
+						function(xmlObj) {
+							var obj = $('#'+formPostedId);
+							var alertMsg = null;
+							var flagError = false;
+							if ($('redirect', xmlObj).length) 
+								window.location = $('redirect', xmlObj).text();
+							if ($('success', xmlObj).length) 
+								alertMsg = $('success', xmlObj).text();
+							if ($('error', xmlObj).length) {
+								flagError = true;
+								alertMsg = $('error', xmlObj).text();							
+							}														
+							if (alertMsg != null && alertMsg != '') 
+								alertBox(alertMsg, flagError);		
+							if (!flagError) {
+								document.getElementById( formPostedId ).reset();
+								$('#'+formPostedId).find('.wrp-valid').removeClass('hide');
+								for (var j_counter = 0; j_counter < needValidate[formPostedId].length; j_counter++) 
+									checkErrors(needValidate[formId][j_counter]);									
+								$('#'+formPostedId).find('.wrp-valid').addClass('hide').hide();								
+							} else {
+								enableSubmitButtom($('input:submit', form));
+							}
+							if ($('captcha_img', xmlObj).length) {
+								form.find('.img-captcha').attr('src', $('captcha_img', xmlObj).text());
+							}
+						});
+					return false;
+				});
+			}			
+		}
+	});
+	return true;
+}
