@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="17.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <CustomBuild Include="C:\project\project_cmake\GIIS\lab2\build\CMakeFiles\5faccea127f379cef1ffd34643c35e93\PACKAGE_force.rule">
+      <Filter>CMake Rules</Filter>
+    </CustomBuild>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="CMake Rules">
+      <UniqueIdentifier>{260FF5AF-C2CC-3AFE-88B0-83784ECD6A4A}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>

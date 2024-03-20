@@ -3,7 +3,6 @@ import pandas as pd
 from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import LabelEncoder, StandardScaler
 from sklearn.neural_network import MLPRegressor
-from sklearn.decomposition import PCA as SKPCA
 
 class CustomPCA:
     def __init__(self, n_components):

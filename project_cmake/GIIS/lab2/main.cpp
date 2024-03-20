@@ -83,14 +83,12 @@ bool saveFileDialog(std::string& selectedFile) {
     ofn.Flags = OFN_OVERWRITEPROMPT | OFN_PATHMUSTEXIST;
 
     if (GetSaveFileNameA(&ofn) == TRUE) {
-        // Проверка, что выбранный файл имеет расширение .vcf
         std::string filePath = ofn.lpstrFile;
         std::string fileExtension = ".vcf";
         if (filePath.length() >= fileExtension.length() &&
             filePath.compare(filePath.length() - fileExtension.length(), fileExtension.length(), fileExtension) == 0) {
             selectedFile = filePath;
         } else {
-            // Если расширение не указано, добавьте его к имени файла
             selectedFile = filePath + fileExtension;
         }
         return true;

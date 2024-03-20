@@ -1,0 +1,150 @@
+.rectangle {
+    width: 500px;
+    height: 200px;
+    background-color: #161616;
+    border: 2px solid #252525;
+    margin-bottom: 10px;
+    z-index: -1;
+    position: relative;
+    border-radius: 10px;
+}
+
+.rectangle_bigger {
+    width: 500px;
+    height: 625px;
+    background-color: #161616;
+    border: 2px solid #252525;
+    margin-right: 10px;
+    z-index: -1;
+    position: relative;
+    border-radius: 10px;
+}
+
+.rectangle_center {
+    width:  1380px;
+    height: 60px;
+    background-color: #161616;
+    border: 2px solid #252525;
+    margin-bottom: 5px;
+    z-index: -1;
+    position: relative;
+    border-radius: 10px;
+}
+
+.rectangle_center_bigger {
+    width:  1380px;
+    height: 770px;
+    background-color: #161616;
+    border: 2px solid #252525;
+    z-index: -1;
+    position: relative;
+    border-radius: 10px;
+}
+
+.rectangle_bottom {
+    width:  1900px;
+    height: 60px;
+    background: linear-gradient(to right, purple, blue);
+    border: 2px solid #252525;
+    margin-top: 10px;
+    position: relative;
+    border-radius: 10px;
+}
+
+.rectangle_small_on_bigger {
+    width:  450px;
+    height: 150px;
+    background-color: rgb(51, 51, 51);
+    border: 2px solid #252525;
+    margin-top: 10px;
+    z-index: -1;
+    position: relative;
+    border-radius: 10px;
+}
+
+.button_left {
+    background-color: white;
+    color: black;
+    border: 2px solid white;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    border-radius: 20px;
+    cursor: pointer;
+}
+
+.button_left:hover {
+    background-color: #f2f2f2;
+}
+
+.button_left_black {
+    background-color: black;
+    color: white;
+    border: 1px solid white;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    border-radius: 20px;
+    cursor: pointer;
+}
+
+.button_left_black:hover {
+    background-color: #333;
+}
+
+.button_left_black:focus {
+    outline: none;
+}
+
+.circle_black {
+    width: 40px;
+    height: 40px;
+    background-color: black;
+    border-radius: 50%;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: gray;
+    font-size: 40px;
+}
+
+.plus_white {
+    font-size: 30px;
+}
+
+.button_top {
+    background-color: white;
+    color: black;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    border-radius: 20px;
+    cursor: pointer;
+}
+
+.rectangle_small_on_bigger_main {
+    width:  200px;
+    height: 270px;
+    background-color: rgb(51, 51, 51);
+    border: 2px solid #252525;
+    margin-top: 10px;
+    z-index: -1;
+    position: relative;
+    border-radius: 10px;
+    margin: 15px;
+}
+
+hr {
+    border: none;
+    height: 1px;
+    background-color: #383838;
+    width: 90%;
+    margin: 20px auto;
+}
