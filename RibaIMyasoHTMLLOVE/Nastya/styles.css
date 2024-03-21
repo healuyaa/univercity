@@ -4,7 +4,7 @@
     background-color: #161616;
     border: 2px solid #252525;
     margin-bottom: 10px;
-    z-index: -1;
+    z-index: 1;
     position: relative;
     border-radius: 10px;
 }
@@ -15,7 +15,7 @@
     background-color: #161616;
     border: 2px solid #252525;
     margin-right: 10px;
-    z-index: -1;
+    z-index: 1;
     position: relative;
     border-radius: 10px;
 }
@@ -26,7 +26,7 @@
     background-color: #161616;
     border: 2px solid #252525;
     margin-bottom: 5px;
-    z-index: -1;
+    z-index: 1;
     position: relative;
     border-radius: 10px;
 }
@@ -36,7 +36,7 @@
     height: 770px;
     background-color: #161616;
     border: 2px solid #252525;
-    z-index: -1;
+    z-index: 1;
     position: relative;
     border-radius: 10px;
 }
@@ -49,6 +49,7 @@
     margin-top: 10px;
     position: relative;
     border-radius: 10px;
+    z-index: 1;
 }
 
 .rectangle_small_on_bigger {
@@ -57,7 +58,7 @@
     background-color: rgb(51, 51, 51);
     border: 2px solid #252525;
     margin-top: 10px;
-    z-index: -1;
+    z-index: 1;
     position: relative;
     border-radius: 10px;
 }
@@ -111,6 +112,7 @@
     align-items: center;
     color: gray;
     font-size: 40px;
+    z-index: 1;
 }
 
 .plus_white {
@@ -135,7 +137,7 @@
     background-color: rgb(51, 51, 51);
     border: 2px solid #252525;
     margin-top: 10px;
-    z-index: -1;
+    z-index: 1;
     position: relative;
     border-radius: 10px;
     margin: 15px;
@@ -145,6 +147,46 @@ hr {
     border: none;
     height: 1px;
     background-color: #383838;
+    width: 90%;
+    margin: 20px auto;
+}
+
+.rectangle_playlists {
+    width:  450px;
+    height: 50px;
+    background-color: rgb(51, 51, 51);
+    border: 2px solid #252525;
+    margin-top: 5px;
+    z-index: 1;
+    position: relative;
+    border-radius: 10px;
+}
+
+.rectangle_playlist-main {
+    width:  1335px;
+    height: 725px;
+    background-color: rgb(51, 51, 51);
+    border: 2px solid #252525;
+    margin-top: 5px;
+    z-index: 1;
+    position: relative;
+    border-radius: 10px;
+}
+.rectangle_playlist-main-square {
+    width:  250px;
+    height: 250px;
+    background-color: rgb(94, 94, 94);
+    border: 2px solid #252525;
+    margin-top: 5px;
+    z-index: 1;
+    position: relative;
+    border-radius: 10px;
+}
+
+.hr1 {
+    border: none;
+    height: 1px;
+    background-color: #797979;
     width: 90%;
     margin: 20px auto;
 }
