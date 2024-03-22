@@ -1,0 +1,9 @@
+C:/project/project_cmake/SSP_2/lab1/build/CMakeFiles/Experimental.dir
+C:/project/project_cmake/SSP_2/lab1/build/CMakeFiles/Nightly.dir
+C:/project/project_cmake/SSP_2/lab1/build/CMakeFiles/Continuous.dir
+C:/project/project_cmake/SSP_2/lab1/build/CMakeFiles/NightlyMemoryCheck.dir
+C:/project/project_cmake/SSP_2/lab1/build/CMakeFiles/ssp_lab_1.dir
+C:/project/project_cmake/SSP_2/lab1/build/CMakeFiles/PACKAGE.dir
+C:/project/project_cmake/SSP_2/lab1/build/CMakeFiles/RUN_TESTS.dir
+C:/project/project_cmake/SSP_2/lab1/build/CMakeFiles/ALL_BUILD.dir
+C:/project/project_cmake/SSP_2/lab1/build/CMakeFiles/ZERO_CHECK.dir
