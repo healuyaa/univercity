@@ -1,0 +1,12 @@
+C:/project/project_cmake/SSP_2/lab2/build/CMakeFiles/Experimental.dir
+C:/project/project_cmake/SSP_2/lab2/build/CMakeFiles/Nightly.dir
+C:/project/project_cmake/SSP_2/lab2/build/CMakeFiles/Continuous.dir
+C:/project/project_cmake/SSP_2/lab2/build/CMakeFiles/NightlyMemoryCheck.dir
+C:/project/project_cmake/SSP_2/lab2/build/CMakeFiles/sqlite3.dir
+C:/project/project_cmake/SSP_2/lab2/build/CMakeFiles/imgui.dir
+C:/project/project_cmake/SSP_2/lab2/build/CMakeFiles/imgui_dx9.dir
+C:/project/project_cmake/SSP_2/lab2/build/CMakeFiles/giis_lab2.dir
+C:/project/project_cmake/SSP_2/lab2/build/CMakeFiles/PACKAGE.dir
+C:/project/project_cmake/SSP_2/lab2/build/CMakeFiles/RUN_TESTS.dir
+C:/project/project_cmake/SSP_2/lab2/build/CMakeFiles/ALL_BUILD.dir
+C:/project/project_cmake/SSP_2/lab2/build/CMakeFiles/ZERO_CHECK.dir

@@ -22,7 +22,7 @@ LRESULT WINAPI WndProc(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam);
 
 
 
-const char* dbPath = "../../BD/hospital.db";
+const char* dbPath = "hospital.db";
 HospitalDatabase hospitalDB(dbPath);
 int InitSqlite3() {
     if (!hospitalDB.openDatabase()) {
